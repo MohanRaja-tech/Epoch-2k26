@@ -1,0 +1,1462 @@
+/* ============================================
+   EPOCH 2026 - REGISTRATION PAGE
+   Player Enrollment Theme
+   ============================================ */
+
+/* ============================================
+   1. Registration Page Container
+   ============================================ */
+.registration-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-primary);
+    padding: var(--spacing-xl) 0;
+}
+
+/* Matrix Background */
+.matrix-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.matrix-rain {
+    position: absolute;
+    top: -100%;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, var(--primary-pink), transparent);
+    animation: matrixFall 10s linear infinite;
+}
+
+.matrix-rain:nth-child(1) { left: 10%; animation-delay: 0s; }
+.matrix-rain:nth-child(2) { left: 20%; animation-delay: 1s; }
+.matrix-rain:nth-child(3) { left: 30%; animation-delay: 2s; }
+.matrix-rain:nth-child(4) { left: 40%; animation-delay: 3s; }
+.matrix-rain:nth-child(5) { left: 50%; animation-delay: 4s; }
+.matrix-rain:nth-child(6) { left: 60%; animation-delay: 5s; }
+.matrix-rain:nth-child(7) { left: 70%; animation-delay: 6s; }
+.matrix-rain:nth-child(8) { left: 80%; animation-delay: 7s; }
+.matrix-rain:nth-child(9) { left: 90%; animation-delay: 8s; }
+.matrix-rain:nth-child(10) { left: 95%; animation-delay: 9s; }
+
+@keyframes matrixFall {
+    0% { top: -100px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* Player Numbers Background */
+.player-numbers-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.player-num {
+    position: absolute;
+    font-family: var(--font-display);
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--primary-pink);
+    opacity: 0.02;
+    user-select: none;
+}
+
+.player-num:nth-child(1) { top: 5%; left: 5%; }
+.player-num:nth-child(2) { top: 20%; right: 10%; }
+.player-num:nth-child(3) { bottom: 30%; left: 15%; }
+.player-num:nth-child(4) { bottom: 10%; right: 5%; }
+.player-num:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+/* ============================================
+   2. Registration Container
+   ============================================ */
+.registration-container {
+    width: 100%;
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+    padding: var(--spacing-md);
+}
+
+/* Registration Card */
+.registration-card {
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: cardEntry 0.8s ease forwards;
+}
+
+@keyframes cardEntry {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Card Glow Effect (no green) */
+.registration-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        45deg,
+        var(--primary-pink),
+        var(--primary-pink),
+        var(--primary-pink),
+        var(--accent-gold),
+        var(--primary-pink)
+    );
+    background-size: 400% 400%;
+    border-radius: var(--radius-xl);
+    opacity: 0;
+    z-index: -1;
+}
+
+/* ============================================
+   3. Registration Header
+   ============================================ */
+.registration-header {
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-pink-dark) 100%);
+    padding: var(--spacing-xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.registration-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.03) 10px,
+        rgba(255, 255, 255, 0.03) 20px
+    );
+}
+
+.reg-header-content { position: relative; z-index: 1; }
+
+.reg-header-content .squid-symbols { margin-bottom: var(--spacing-md); }
+
+.reg-header-content .squid-symbols .symbol {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+.reg-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--text-primary);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+    margin-bottom: var(--spacing-sm);
+}
+
+.reg-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 500;
+}
+
+/* New Player Badge */
+.new-player-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 50px;
+    margin-top: var(--spacing-md);
+}
+
+.new-player-badge i { color: var(--accent-gold); font-size: 1.2rem; }
+
+.new-player-badge span {
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+/* ============================================
+   4. Progress Tracker
+   ============================================ */
+.progress-tracker {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.progress-line {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    right: 40px;
+    height: 3px;
+    background: var(--border-color);
+    z-index: 0;
+}
+
+.progress-line-active {
+    height: 100%;
+    background: var(--gradient-pink);
+    transition: width 0.5s ease;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
+}
+
+.step-indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.step-icon {
+    color: var(--text-muted);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Active Step */
+.progress-step.active .step-indicator {
+    background: var(--gradient-pink);
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 20px rgba(237, 27, 118, 0.4);
+}
+.progress-step.active .step-icon { color: var(--text-primary); }
+.progress-step.active .step-label { color: var(--primary-pink); }
+
+/* Completed Step (pink, no green) */
+.progress-step.completed .step-indicator {
+    background: var(--primary-pink);
+    border-color: var(--primary-pink);
+}
+.progress-step.completed .step-icon {
+    color: var(--text-primary);
+}
+.progress-step.completed .step-icon::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+.progress-step.completed .step-label { color: var(--primary-pink); }
+
+/* ============================================
+   5. Registration Body
+   ============================================ */
+.registration-body { padding: var(--spacing-xl); }
+
+.form-steps-container { position: relative; }
+
+.form-step { display: none; animation: stepFadeIn 0.5s ease; }
+.form-step.active { display: block; }
+
+@keyframes stepFadeIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Step Header */
+.step-header { margin-bottom: var(--spacing-xl); text-align: center; }
+
+.step-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.step-title i { color: var(--primary-pink); }
+
+.step-description { font-size: 0.9rem; color: var(--text-muted); }
+
+/* ============================================
+   6. Form Grid & Groups
+   ============================================ */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.form-group { position: relative; }
+
+.form-group.full-width { grid-column: 1 / -1; }
+
+/* Floating Label Input (aligned height + space for toggle) */
+.floating-label { 
+    position: relative; 
+    display: block;
+    height: 56px;
+}
+
+.floating-input {
+    height: 56px;
+    width: 100%;
+    padding: 16px var(--spacing-md) 8px var(--spacing-md);
+    background: transparent;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+/* Extra padding for fields with eye toggle */
+.floating-input.password-field,
+.floating-label.has-toggle .floating-input { padding-right: 60px; }
+
+.floating-input:focus {
+    outline: none;
+    border-color: var(--primary-pink);
+    background: transparent;
+    box-shadow: 0 0 20px rgba(237, 27, 118, 0.2);
+    color: var(--text-primary);
+}
+
+.floating-input:not(:placeholder-shown) {
+    background: transparent;
+    color: var(--text-primary);
+}
+
+/* Label */
+.floating-label label {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 8px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    background: transparent;
+    padding: 0 var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-pink);
+}
+
+.floating-input:focus + label,
+.floating-input:not(:placeholder-shown) + label {
+    top: 8px;
+    font-size: 0.75rem;
+    color: var(--primary-pink);
+}
+
+/* Password Toggle (perfectly centered) */
+.password-toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+    z-index: 5;
+    flex-shrink: 0;
+}
+
+.password-toggle:hover {
+    color: var(--primary-pink);
+    background: rgba(237, 27, 118, 0.1);
+}
+.password-toggle:focus { outline: none; color: var(--primary-pink); }
+.password-toggle i { font-size: 1rem; pointer-events: none; line-height: 1; }
+
+/* Custom Select */
+.custom-select { position: relative; }
+
+.custom-select select {
+    width: 100%;
+    height: 56px;
+    padding: 0 var(--spacing-md);
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: all 0.3s ease;
+}
+
+.custom-select select:focus {
+    outline: none;
+    border-color: var(--primary-pink);
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px rgba(237, 27, 118, 0.2);
+}
+
+.custom-select::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.custom-select select option {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: var(--spacing-sm);
+}
+
+/* Field Error */
+.field-error {
+    display: none;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: #ff4757;
+    font-size: 0.8rem;
+    margin-top: var(--spacing-xs);
+}
+.field-error.show { display: flex; }
+
+/* Input Error State */
+.floating-input.error,
+.custom-select select.error {
+    border-color: #ff4757 !important;
+    background: rgba(255, 71, 87, 0.05) !important;
+}
+
+/* ============================================
+   7. Events Selection
+   ============================================ */
+.events-selection { margin-bottom: var(--spacing-xl); }
+.events-category { margin-bottom: var(--spacing-xl); }
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-header i { color: var(--primary-pink); font-size: 1.2rem; }
+
+.category-header h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+/* Event Select Card */
+.event-select-card { position: relative; }
+.event-checkbox { display: none; }
+
+.event-content {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.event-check-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.event-check-icon::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.event-details { flex: 1; }
+
+.event-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.event-name i { color: var(--primary-pink); margin-right: var(--spacing-xs); }
+
+.event-meta {
+    display: flex;
+    gap: var(--spacing-md);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.event-meta span { display: flex; align-items: center; gap: 4px; }
+.event-meta i { font-size: 0.7rem; }
+
+/* Selected Event */
+.event-select-card.selected .event-content,
+.event-checkbox:checked + .event-content {
+    border-color: var(--primary-pink);
+    background: rgba(237, 27, 118, 0.1);
+}
+.event-select-card.selected .event-check-icon,
+.event-checkbox:checked + .event-content .event-check-icon {
+    background: var(--primary-pink);
+    border-color: var(--primary-pink);
+}
+.event-select-card.selected .event-check-icon::after,
+.event-checkbox:checked + .event-content .event-check-icon::after {
+    opacity: 1;
+}
+
+/* ============================================
+   8. Terms Section
+   ============================================ */
+.terms-section {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.terms-content { margin-bottom: var(--spacing-lg); }
+
+.terms-content h4 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.terms-content p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-sm);
+}
+
+.terms-content ul { list-style: none; padding: 0; margin: 0; }
+
+.terms-content ul li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+.terms-content ul li::before {
+    content: '•';
+    position: absolute;
+    left: var(--spacing-sm);
+    color: var(--primary-pink);
+}
+
+/* Terms Checkbox */
+.terms-checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+}
+
+.terms-checkbox { display: none; }
+
+.terms-checkmark {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-top: 2px;
+}
+.terms-checkmark::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--text-primary);
+    font-size: 0.7rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.terms-checkbox:checked + .terms-checkmark {
+    background: var(--primary-pink);
+    border-color: var(--primary-pink);
+}
+.terms-checkbox:checked + .terms-checkmark::after { opacity: 1; }
+
+.terms-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.terms-label a { color: var(--primary-pink); text-decoration: none; }
+.terms-label a:hover { text-decoration: underline; }
+
+/* ============================================
+   9. Form Navigation
+   ============================================ */
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+    gap: var(--spacing-md);
+}
+
+/* When only next button exists (no prev button), align to the right */
+.form-navigation.only-next {
+    justify-content: flex-end;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn.prev {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-secondary);
+}
+.nav-btn.prev:hover {
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+}
+
+.nav-btn.next,
+.nav-btn.submit {
+    background: var(--gradient-pink);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-btn.next:hover,
+.nav-btn.submit:hover {
+    box-shadow: var(--shadow-pink);
+    transform: translateY(-2px);
+}
+.nav-btn:active { transform: translateY(1px); }
+
+/* ============================================
+   10. WhatsApp Join Section
+   ============================================ */
+.whatsapp-join-section {
+    margin-top: var(--spacing-xl);
+    padding: 0;
+}
+
+.whatsapp-card {
+    background: linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(37, 211, 102, 0.05) 100%);
+    border: 2px solid rgba(37, 211, 102, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.whatsapp-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(37, 211, 102, 0.1) 0%, transparent 70%);
+    animation: whatsappPulse 3s ease-in-out infinite;
+}
+
+@keyframes whatsappPulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.whatsapp-card:hover {
+    border-color: rgba(37, 211, 102, 0.6);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.2);
+    transform: translateY(-5px);
+}
+
+.whatsapp-icon-wrapper {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    animation: whatsappBounce 2s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes whatsappBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.whatsapp-icon-wrapper i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.whatsapp-content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.whatsapp-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.whatsapp-content h3 i {
+    color: #25d366;
+    font-size: 1.5rem;
+}
+
+.whatsapp-content > p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.whatsapp-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-lg) 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.whatsapp-benefits li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.whatsapp-benefits li i {
+    color: #25d366;
+    font-size: 0.85rem;
+}
+
+.whatsapp-action {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.btn-whatsapp-join {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp-join:hover {
+    background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp-join i {
+    font-size: 1.2rem;
+}
+
+.whatsapp-important {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: #ff4757;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(255, 71, 87, 0.1);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid #ff4757;
+}
+
+.whatsapp-important i {
+    font-size: 1rem;
+    animation: importantPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes importantPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Responsive Design for WhatsApp Section */
+@media (max-width: 768px) {
+    .whatsapp-card {
+        flex-direction: column;
+        padding: var(--spacing-lg);
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .whatsapp-icon-wrapper {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .whatsapp-icon-wrapper i {
+        font-size: 2rem;
+    }
+    
+    .whatsapp-content h3 {
+        font-size: 1.1rem;
+        justify-content: center;
+    }
+    
+    .whatsapp-benefits {
+        grid-template-columns: 1fr;
+    }
+    
+    .whatsapp-action {
+        flex-direction: column;
+        width: 100%;
+        gap: var(--spacing-sm);
+    }
+    
+    .btn-whatsapp-join {
+        width: 100%;
+        justify-content: center;
+        padding: var(--spacing-md);
+    }
+    
+    .whatsapp-important {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .whatsapp-card {
+        padding: var(--spacing-md);
+    }
+    
+    .whatsapp-icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .whatsapp-icon-wrapper i {
+        font-size: 1.8rem;
+    }
+    
+    .whatsapp-content h3 {
+        font-size: 1rem;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .whatsapp-content > p {
+        font-size: 0.85rem;
+    }
+    
+    .whatsapp-benefits li {
+        font-size: 0.8rem;
+    }
+    
+    .btn-whatsapp-join {
+        font-size: 0.9rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .whatsapp-important {
+        font-size: 0.75rem;
+    }
+}
+
+/* ============================================
+   11. Back to Home
+   ============================================ */
+.back-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.back-home span { color: var(--text-muted); }
+
+.back-home .btn {
+    font-size: 0.9rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: all 0.3s ease;
+}
+.back-home .btn:hover {
+    border-color: var(--primary-pink);
+    color: var(--primary-pink);
+}
+
+/* ============================================
+   12. Success Modal
+   ============================================ */
+.success-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--spacing-md);
+}
+.success-modal.active { display: flex; }
+
+.success-content {
+    background: rgba(30, 30, 30, 0.95);
+    border: 2px solid var(--primary-pink);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xxl);
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    animation: modalPop 0.5s ease;
+}
+
+@keyframes modalPop {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Pink success, no green */
+.success-icon {
+    width: 100px;
+    height: 100px;
+    background: var(--gradient-pink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-lg);
+    animation: successPulse 2s ease-in-out infinite;
+}
+@keyframes successPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(237, 27, 118, 0.4); }
+    50%      { box-shadow: 0 0 0 20px rgba(237, 27, 118, 0); }
+}
+
+.success-icon i { font-size: 3rem; color: var(--text-primary); }
+
+.success-content h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+.success-content p { color: var(--text-secondary); margin-bottom: var(--spacing-lg); }
+
+.player-number-display {
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--accent-gold);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+.player-number-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: var(--spacing-sm) !important;
+}
+.player-number-value {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--accent-gold);
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+    margin-bottom: 0 !important;
+}
+
+.success-content .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+/* ============================================
+   12. Event Counter (Fixed)
+   ============================================ */
+.event-counter {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    background: rgba(30, 30, 30, 0.95);
+    border: 2px solid var(--primary-pink);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: none;
+    align-items: center;
+    gap: var(--spacing-sm);
+    z-index: 100;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+.event-counter.show { display: flex; }
+.event-counter .count { font-weight: 700; color: var(--primary-pink); }
+
+/* ============================================
+   13. Toast Container
+   ============================================ */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* ============================================
+   14. Payment Section Styles (pink, not green)
+   ============================================ */
+.payment-info-box {
+    background: rgba(237, 27, 118, 0.08);
+    border: 1px solid var(--primary-pink);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.payment-info-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+.payment-info-header i { color: var(--primary-pink); font-size: 1.2rem; }
+.payment-info-header h4 {
+    font-size: 1rem;
+    color: var(--primary-pink);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.payment-info-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.payment-info-content ul { list-style: none; padding: 0; margin: 0 0 var(--spacing-md) 0; }
+.payment-info-content ul li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    padding: var(--spacing-xs) 0;
+    padding-left: var(--spacing-md);
+    position: relative;
+}
+.payment-info-content ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-pink);
+}
+
+.payment-note {
+    font-size: 1rem !important;
+    color: var(--text-primary) !important;
+    background: rgba(0, 0, 0, 0.3);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+.payment-note strong { color: var(--accent-gold); font-size: 1.2rem; }
+
+/* File Upload Area */
+.file-upload-area {
+    position: relative;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+}
+.file-upload-area:hover,
+.file-upload-area.dragover {
+    border-color: var(--primary-pink);
+    background: rgba(237, 27, 118, 0.05);
+}
+.file-upload-area.has-file .file-upload-content { display: none; }
+
+.file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+.file-upload-content i { font-size: 3rem; color: var(--primary-pink); }
+.file-upload-text { font-size: 1rem; color: var(--text-primary); margin: 0; }
+.file-upload-hint { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+
+/* File Preview */
+.file-preview {
+    display: none;
+    position: relative;
+    max-width: 200px;
+    margin: 0 auto;
+}
+.file-preview img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--primary-pink);
+}
+.remove-file-btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--primary-pink);
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.remove-file-btn:hover {
+    background: var(--primary-pink-dark);
+    transform: scale(1.1);
+}
+
+/* ============================================
+   15. Responsive Styles
+   ============================================ */
+@media (max-width: 768px) {
+    .registration-container { max-width: 100%; padding: var(--spacing-sm); }
+    .registration-header { padding: var(--spacing-lg); }
+    .reg-title { font-size: 1.4rem; letter-spacing: 3px; }
+    .reg-subtitle { font-size: 0.8rem; letter-spacing: 2px; }
+    .new-player-badge { padding: var(--spacing-xs) var(--spacing-md); }
+    .new-player-badge span { font-size: 0.75rem; }
+    .progress-tracker { padding: var(--spacing-md); }
+    .registration-body { padding: var(--spacing-md); }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-navigation { flex-direction: column; }
+    .form-navigation.only-next { justify-content: center; }
+    .nav-btn { width: 100%; justify-content: center; }
+    .back-home { flex-direction: column; }
+    .back-home .btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+    .progress-steps { gap: var(--spacing-xs); }
+    .step-indicator { width: 35px; height: 35px; }
+    .step-icon { font-size: 0.9rem; }
+    .step-label { font-size: 0.65rem; }
+    .step-title { font-size: 1.1rem; flex-direction: column; gap: var(--spacing-xs); }
+    .player-number-value { font-size: 3rem; }
+}
+
+/* ============================================
+   16. Registration Closed Popup
+   ============================================ */
+.registration-closed-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registration-closed-popup .popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.registration-closed-popup .popup-content {
+    position: relative;
+    background: var(--bg-card);
+    border: 2px solid var(--primary-pink);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xxl);
+    text-align: center;
+    max-width: 450px;
+    margin: var(--spacing-md);
+    animation: popupSlideIn 0.5s ease;
+}
+
+@keyframes popupSlideIn {
+    from { opacity: 0; transform: scale(0.8) translateY(-30px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.registration-closed-popup .popup-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-pink-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-lg);
+}
+.registration-closed-popup .popup-icon i {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+}
+
+.registration-closed-popup h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-pink);
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.registration-closed-popup p { font-size: 1rem; color: var(--text-secondary); margin-bottom: var(--spacing-sm); }
+.registration-closed-popup .popup-subtext { font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--spacing-lg); }
+
+.registration-closed-popup .popup-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-pink-dark));
+    color: var(--text-primary);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.registration-closed-popup .popup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(237, 27, 118, 0.4);
+}
+
+/* ============================================
+   17. Squid Game Symbols (for header)
+   ============================================ */
+.squid-symbols {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.squid-symbols.small .symbol { width: 35px; height: 35px; }
+
+.squid-symbols .symbol {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--primary-pink);
+    transition: all 0.3s ease;
+}
+
+.squid-symbols .symbol.circle { border-radius: 50%; }
+.squid-symbols .symbol.circle i { font-size: 0.8rem; }
+
+.squid-symbols .symbol.triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid transparent;
+    border-bottom-color: var(--primary-pink);
+    background: transparent;
+}
+
+.squid-symbols.small .symbol.triangle {
+    border-left-width: 15px;
+    border-right-width: 15px;
+    border-bottom-width: 26px;
+}
+
+.squid-symbols .symbol.square { border-radius: var(--radius-sm); }
+.squid-symbols .symbol.square i { font-size: 0.8rem; }

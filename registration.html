@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register for EPOCH 2026 - Join the Squid Games">
+    <title>Registration - EPOCH 2026 | Squid Games Symposium</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&family=Russo+One&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/registration.css">
+    
+</head>
+
+<body>
+
+    <!-- Registration Page -->
+    <div class="registration-page">
+        <!-- Matrix Background -->
+        <div class="matrix-bg">
+            <div class="matrix-rain"></div>
+            <div class="matrix-rain"></div>
+            <div class="matrix-rain"></div>
+            <div class="matrix-rain"></div>
+            <div class="matrix-rain"></div>
+            <div class="matrix-rain"></div>
+            <div class="matrix-rain"></div>
+            <div class="matrix-rain"></div>
+            <div class="matrix-rain"></div>
+            <div class="matrix-rain"></div>
+        </div>
+
+        <!-- Player Numbers Background -->
+        <div class="player-numbers-bg">
+            <span class="player-num">001</span>
+            <span class="player-num">067</span>
+            <span class="player-num">218</span>
+            <span class="player-num">456</span>
+            <span class="player-num">199</span>
+        </div>
+
+        <!-- Registration Container -->
+        <div class="registration-container">
+            <div class="registration-card">
+                <!-- Card Header -->
+                <div class="registration-header">
+                    <div class="reg-header-content">
+                        <div class="squid-symbols small">
+                            <div class="symbol circle"><i class="fas fa-circle"></i></div>
+                            <div class="symbol triangle"></div>
+                            <div class="symbol square"><i class="fas fa-square"></i></div>
+                        </div>
+                        <h1 class="reg-title">PLAYER REGISTRATION</h1>
+                        <p class="reg-subtitle">Join EPOCH 2026 Games</p>
+                        <div class="new-player-badge">
+                            <i class="fas fa-user-plus"></i>
+                            <span>NEW PLAYER ENROLLMENT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Tracker -->
+                <div class="progress-tracker">
+                    <div class="progress-steps">
+                        <div class="progress-line">
+                            <div class="progress-line-active" style="width: 0%"></div>
+                        </div>
+
+                        <div class="progress-step active" data-step="1">
+                            <div class="step-indicator">
+                                <i class="step-icon fas fa-user"></i>
+                            </div>
+                            <span class="step-label">Personal</span>
+                        </div>
+
+                        <div class="progress-step" data-step="2">
+                            <div class="step-indicator">
+                                <i class="step-icon fas fa-university"></i>
+                            </div>
+                            <span class="step-label">College</span>
+                        </div>
+
+                        <div class="progress-step" data-step="3">
+                            <div class="step-indicator">
+                                <i class="step-icon fas fa-credit-card"></i>
+                            </div>
+                            <span class="step-label">Payment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Body -->
+                <div class="registration-body">
+                    <form id="registration-form" class="registration-form">
+                        <div class="form-steps-container">
+
+                            <!-- Step 1: Personal Information -->
+                            <div class="form-step active" id="step-1">
+                                <div class="step-header">
+                                    <h2 class="step-title">
+                                        <i class="fas fa-user-circle"></i>
+                                        Personal Information
+                                    </h2>
+                                    <p class="step-description">
+                                        Enter your personal details to create your player profile
+                                    </p>
+                                </div>
+
+                                <div class="form-grid">
+                                    <!-- Full Name -->
+                                    <div class="form-group full-width">
+                                        <div class="floating-label">
+                                            <input type="text" class="floating-input" id="full-name" name="name"
+                                                placeholder=" " required>
+                                            <label for="full-name">Full Name *</label>
+                                        </div>
+                                        <span class="field-error" id="name-error"></span>
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div class="form-group">
+                                        <div class="floating-label">
+                                            <input type="email" class="floating-input" id="email" name="email"
+                                                placeholder=" " required>
+                                            <label for="email">Email Address *</label>
+                                        </div>
+                                        <span class="field-error" id="email-error"></span>
+                                    </div>
+
+                                    <!-- Phone -->
+                                    <div class="form-group">
+                                        <div class="floating-label">
+                                            <input type="tel" class="floating-input" id="phone" name="phone"
+                                                placeholder=" " pattern="[0-9]{10}" maxlength="10" required>
+                                            <label for="phone">Phone Number *</label>
+                                        </div>
+                                        <span class="field-error" id="phone-error"></span>
+                                    </div>
+
+                                    <!-- Password -->
+                                    <div class="form-group">
+    <div class="floating-label">
+        <input 
+            type="password" 
+            class="floating-input password-field" 
+            id="password" 
+            name="password"
+            placeholder=" " 
+            autocomplete="new-password" 
+            required
+        >
+        <label for="password">Password *</label>
+        <button type="button" class="password-toggle" data-target="password">
+            <i class="fas fa-eye"></i>
+        </button>
+    </div>
+    <span class="field-error" id="password-error"></span>
+</div>
+
+<!-- Confirm Password -->
+<div class="form-group">
+    <div class="floating-label">
+        <input 
+            type="password" 
+            class="floating-input password-field" 
+            id="confirm-password" 
+            name="confirm-password"
+            placeholder=" " 
+            autocomplete="new-password" 
+            required
+        >
+        <label for="confirm-password">Confirm Password *</label>
+        <button type="button" class="password-toggle" data-target="confirm-password">
+            <i class="fas fa-eye"></i>
+        </button>
+    </div>
+    <span class="field-error" id="confirm-password-error"></span>
+</div>
+
+                                </div><!-- Close form-grid -->
+
+                                <div class="form-navigation">
+                                    <button type="button" class="nav-btn next">
+                                        Next Step
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div><!-- Close step-1 -->
+
+                            <!-- Step 2: College Details -->
+                            <div class="form-step" id="step-2">
+                                <div class="step-header">
+                                    <h2 class="step-title">
+                                        <i class="fas fa-university"></i>
+                                        College Details
+                                    </h2>
+                                    <p class="step-description">
+                                        Provide your educational institution information
+                                    </p>
+                                </div>
+
+                                <div class="form-grid">
+                                    <!-- College Name -->
+                                    <div class="form-group full-width">
+                                        <div class="floating-label">
+                                            <input type="text" class="floating-input" id="college-name" name="college"
+                                                placeholder=" " required>
+                                            <label for="college-name">College/University Name *</label>
+                                        </div>
+                                        <span class="field-error" id="college-error"></span>
+                                    </div>
+
+                                    <!-- Department -->
+                                    <div class="form-group">
+                                        <div class="custom-select">
+                                            <select id="department" name="department" required>
+                                                <option value="">Select Department *</option>
+                                                <option value="CSE">Computer Science</option>
+                                                <option value="ECE">Electronics & Communication</option>
+                                                <option value="EEE">Electrical & Electronics</option>
+                                                <option value="MECH">Mechanical</option>
+                                                <option value="CIVIL">Civil</option>
+                                                <option value="IT">Information Technology</option>
+                                                <option value="OTHER">Other</option>
+                                            </select>
+                                        </div>
+                                        <span class="field-error" id="dept-error"></span>
+                                    </div>
+
+                                    <!-- Year of Study -->
+                                    <div class="form-group">
+                                        <div class="custom-select">
+                                            <select id="year-of-study" name="year" required>
+                                                <option value="">Select Year *</option>
+                                                <option value="1">1st Year</option>
+                                                <option value="2">2nd Year</option>
+                                                <option value="3">3rd Year</option>
+                                                <option value="4">4th Year</option>
+                                                <option value="5">5th Year</option>
+                                            </select>
+                                        </div>
+                                        <span class="field-error" id="year-error"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-navigation">
+                                    <button type="button" class="nav-btn prev">
+                                        <i class="fas fa-arrow-left"></i>
+                                        Previous
+                                    </button>
+                                    <button type="button" class="nav-btn next">
+                                        Next Step
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Payment Details -->
+<div class="form-step" id="step-3">
+    <div class="step-header">
+        <h2 class="step-title">
+            <i class="fas fa-credit-card"></i>
+            Payment Details
+        </h2>
+        <p class="step-description">
+            Complete your payment and upload the screenshot
+        </p>
+    </div>
+
+    <div class="payment-info-box">
+        <div class="payment-info-header">
+            <i class="fas fa-info-circle"></i>
+            <h4>Payment Instructions</h4>
+        </div>
+        <div class="payment-info-content">
+            <p>Please make your payment using one of the following methods:</p>
+            <ul>
+                <li><strong>Account NO:</strong> 1247172000000828</li>
+                <li><strong>IFSC Code:</strong> KVBL0001247</li>
+                <li><strong>Account Name:</strong> KONGU COLLEGE OF ENGINEERING</li>
+                <li>Keep the transaction screenshot ready while coming to the event.</li>
+                <li>Fake payment or other unnecessary action leads to disqualification</li>
+            </ul>
+            <p class="payment-note">Registration Fee: <strong>₹255</strong></p>
+        </div>
+    </div>
+
+    <div class="form-grid">
+        <!-- Transaction ID -->
+        <div class="form-group full-width">
+            <div class="floating-label">
+                <input type="text" class="floating-input" id="transaction-id"
+                    name="transactionId" placeholder=" " required>
+                <label for="transaction-id">Transaction ID *</label>
+            </div>
+            <span class="field-error" id="transaction-error"></span>
+        </div>
+
+        <!-- Payment Screenshot -->
+        <div class="form-group full-width">
+            <div class="file-upload-area" id="payment-upload-area">
+                <input type="file" class="file-input" id="payment-screenshot"
+                    name="paymentScreenshot" accept="image/*" required>
+                <div class="file-upload-content">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p class="file-upload-text">Click to upload or drag and drop</p>
+                    <p class="file-upload-hint">Payment Screenshot (Max 100KB)</p>
+                </div>
+                <div class="file-preview" id="file-preview">
+                    <img id="preview-image" src="" alt="Preview">
+                    <button type="button" class="remove-file-btn" id="remove-file">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <span class="field-error" id="screenshot-error"></span>
+        </div>
+    </div>
+
+    <!-- WhatsApp Group Section - NEW -->
+    <div class="whatsapp-join-section">
+        <div class="whatsapp-card">
+            <div class="whatsapp-icon-wrapper">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="whatsapp-content">
+                <h3><i class="fab fa-whatsapp"></i> Join EPOCH 2026 WhatsApp Group</h3>
+                <p>Get instant updates, connect with participants, and stay informed about the event!</p>
+                <ul class="whatsapp-benefits">
+                    <li><i class="fas fa-check"></i> Event announcements & updates</li>
+                    <li><i class="fas fa-check"></i> Connect with other participants</li>
+                    <li><i class="fas fa-check"></i> Quick support from organizers</li>
+                    <li><i class="fas fa-check"></i> Important reminders & schedules</li>
+                </ul>
+                <div class="whatsapp-action">
+                    <a href="https://chat.whatsapp.com/BTHm3kwsGdGASxUQ2VuWzS" 
+                       target="_blank" 
+                       class="btn-whatsapp-join"
+                       onclick="trackWhatsAppClick()">
+                        <i class="fab fa-whatsapp"></i>
+                        Join WhatsApp Group
+                    </a>
+                    <p class="whatsapp-important">
+                        <i class="fas fa-exclamation-circle"></i> 
+                        Important - Join now for event updates!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <div class="terms-section">
+        <div class="terms-content">
+            <h4>Terms & Conditions</h4>
+            <p>By registering for EPOCH 2026, you agree to:</p>
+            <ul>
+                <li>Follow all event rules and regulations</li>
+                <li>Maintain professional conduct during the event</li>
+                <li>Respect fellow participants and organizers</li>
+                <li>Abide by the college code of conduct</li>
+                <li>Accept judges' decisions as final</li>
+            </ul>
+        </div>
+        <label class="terms-checkbox-wrapper">
+            <input type="checkbox" class="terms-checkbox" id="terms" name="terms" required>
+            <span class="terms-checkmark"></span>
+            <span class="terms-label">
+                I agree to the <a href="#">Terms & Conditions</a> and
+                <a href="#">Privacy Policy</a> *
+            </span>
+        </label>
+        <span class="field-error" id="terms-error"></span>
+    </div>
+
+    <div class="form-navigation">
+        <button type="button" class="nav-btn prev">
+            <i class="fas fa-arrow-left"></i>
+            Previous
+        </button>
+        <button type="submit" class="nav-btn submit">
+            <i class="fas fa-user-plus"></i>
+            Complete Registration
+        </button>
+    </div>
+</div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Back to Home -->
+                <div class="back-home">
+                    <a href="index.html" class="btn btn-secondary">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                    <a href="login.html" class="btn btn-secondary">
+                        Already registered? <strong>Login</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="success-modal">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2>Registration Successful!</h2>
+            <p>Welcome to EPOCH 2026!</p>
+
+            <div class="player-number-display">
+                <p class="player-number-label">Your Player Number</p>
+                <p class="player-number-value" id="player-number">456</p>
+            </div>
+
+            <p>Please save your player number for future reference.</p>
+
+            <a href="login.html" class="btn btn-primary btn-large">
+                <i class="fas fa-sign-in-alt"></i> Proceed to Login
+            </a>
+        </div>
+    </div>
+
+    <!-- Event Counter (Fixed) -->
+    <div class="event-counter"></div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script src="js/forms.js"></script>
+
+    <script>
+        // Debug script to test button functionality
+        console.log('🔍 Debug script loaded');
+        
+        // Test after a short delay to ensure DOM is ready
+        setTimeout(function() {
+            console.log('🔍 Testing button presence...');
+            const nextButtons = document.querySelectorAll('.nav-btn.next');
+            const form = document.getElementById('registration-form');
+            console.log('Found next buttons:', nextButtons.length);
+            console.log('Found registration form:', !!form);
+            
+            if (nextButtons.length === 0) {
+                console.error('❌ No next buttons found!');
+            } else {
+                console.log('✅ Next buttons found:', nextButtons);
+                
+                // Add a test click handler
+                nextButtons.forEach((btn, index) => {
+                    console.log(`Adding test handler to button ${index}`);
+                    btn.addEventListener('click', function() {
+                        console.log('🎯 BUTTON CLICKED! Index:', index);
+                    });
+                });
+            }
+        }, 1000);
+    </script>
+
+    <script>
+        // Password Toggle Function
+        document.querySelectorAll('.password-toggle').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const floatingLabel = this.parentElement;
+                const input = floatingLabel.querySelector('.password-field');
+                const icon = this.querySelector('i');
+                
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+                
+                // Keep focus on input
+                input.focus();
+            });
+        });
+
+        // File upload handling with 100KB size validation
+        const fileInput = document.getElementById('payment-screenshot');
+        const uploadArea = document.getElementById('payment-upload-area');
+        const filePreview = document.getElementById('file-preview');
+        const previewImage = document.getElementById('preview-image');
+        const removeFileBtn = document.getElementById('remove-file');
+        const screenshotError = document.getElementById('screenshot-error');
+        const MAX_FILE_SIZE = 100 * 1024; // 100KB in bytes
+
+        if (fileInput) {
+            fileInput.addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                if (file) {
+                    if (file.size > MAX_FILE_SIZE) {
+                        screenshotError.textContent = 'File size must be less than or equal to 100KB';
+                        screenshotError.classList.add('show');
+                        fileInput.value = '';
+                        return;
+                    }
+                    screenshotError.textContent = '';
+                    screenshotError.classList.remove('show');
+
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        previewImage.src = e.target.result;
+                        uploadArea.classList.add('has-file');
+                        filePreview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Drag and drop support
+            uploadArea.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', function (e) {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+            });
+
+            uploadArea.addEventListener('drop', function (e) {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                const file = e.dataTransfer.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    if (file.size > MAX_FILE_SIZE) {
+                        screenshotError.textContent = 'File size must be less than or equal to 100KB';
+                        screenshotError.classList.add('show');
+                        return;
+                    }
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(file);
+                    fileInput.files = dataTransfer.files;
+                    fileInput.dispatchEvent(new Event('change'));
+                }
+            });
+
+            if (removeFileBtn) {
+                removeFileBtn.addEventListener('click', function () {
+                    fileInput.value = '';
+                    previewImage.src = '';
+                    uploadArea.classList.remove('has-file');
+                    filePreview.style.display = 'none';
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
