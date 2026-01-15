@@ -291,6 +291,12 @@
     transition: var(--transition-normal);
 }
 
+/* Add extra padding-right for password fields with toggle button */
+input[type="password"].login-input,
+input[type="text"].login-input[id*="password"] {
+    padding-right: 50px;
+}
+
 .login-input:focus {
     outline: none;
     border-color: var(--primary-pink);
@@ -328,6 +334,18 @@
     color: var(--text-muted);
     cursor: pointer;
     padding: var(--spacing-xs);
+    z-index: 10;
+    font-size: 1rem;
+    transition: var(--transition-normal);
+}
+
+.password-toggle:hover {
+    color: var(--primary-pink);
+}
+
+.password-toggle:focus {
+    outline: none;
+    color: var(--primary-pink);
 }
 
 /* Remember Me & Forgot Password */

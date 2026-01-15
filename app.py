@@ -108,7 +108,7 @@ MAX_PAPER_PRESENTATION_TEAMS = 60
 
 #@app.route('/<path:path>')
 #def serve_static(path):
-#    return send_from_directory('.', path)
+#   return send_from_directory('.', path)
 
 
 # API: User Registration
