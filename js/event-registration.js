@@ -12,10 +12,9 @@ const EPOCH_FORM_EVENTS = [
 ];
 
 // Events that allow 3 participants (optional 3rd member)
-// ONLY Paper Presentation and Prompt Arena show "Add Participant 3" button
+// ONLY Paper Presentation shows "Add Participant 3" button
 const THREE_PARTICIPANT_EVENTS = [
-    'paper-presentation',
-    'prompt-arena'
+    'paper-presentation'
 ];
 
 // SOLO EVENTS (1 participant only)
