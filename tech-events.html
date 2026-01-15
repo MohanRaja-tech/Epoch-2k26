@@ -499,33 +499,38 @@
                     </div>
                 </div>
 
-                <!-- Team Name Section (Common for all events) -->
-                <div class="team-name-section" id="teamNameSection">
+                <!-- Paper Presentation Fields (Team Name + Paper Title) -->
+                <div class="paper-presentation-fields" id="paperPresentationFields" style="display: none;">
                     <div class="form-group">
                         <label for="teamName">Team Name *</label>
                         <div class="input-wrapper">
                             <i class="fas fa-users-cog"></i>
-                            <input type="text" id="teamName" name="teamName"
-                                placeholder="Enter your team name">
+                            <input type="text" id="teamName" name="teamName" placeholder="Enter your team name">
                         </div>
                     </div>
-                </div>
-
-                <!-- Paper Title (Only for Paper Presentation) -->
-                <div class="paper-title-section" id="paperPresentationFields" style="display: none;">
                     <div class="form-group">
                         <label for="paperTitle">Paper Title *</label>
                         <div class="input-wrapper">
                             <i class="fas fa-file-alt"></i>
-                            <input type="text" id="paperTitle" name="paperTitle"
-                                placeholder="Enter your paper title" required>
+                            <input type="text" id="paperTitle" name="paperTitle" placeholder="Enter your paper title">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Name Section (For Binary Battle and Prompt Arena) -->
+                <div class="team-name-section" id="teamNameSection" style="display: none;">
+                    <div class="form-group">
+                        <label for="teamNameOnly">Team Name *</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-users-cog"></i>
+                            <input type="text" id="teamNameOnly" name="teamNameOnly" placeholder="Enter your team name">
                         </div>
                     </div>
                 </div>
 
                 <!-- Participant 1 Section (Team Leader) -->
                 <div class="participant-section" id="participant1Section">
-                    <h4><i class="fas fa-user-crown"></i> Participant 1 (Team Leader)</h4>
+                    <h4 id="participant1Title"><i class="fas fa-user-crown"></i> Participant 1 (Team Leader)</h4>
 
                     <div class="form-row">
                         <div class="form-group">
@@ -667,6 +672,10 @@
                 <button type="button" class="btn btn-outline btn-full add-participant-btn" id="addParticipant3Btn" style="display: none;">
                     <i class="fas fa-plus"></i> Add Participant 3
                 </button>
+
+                <!-- Standard Form Sections (Hidden - for future use) -->
+                <div class="participant-section" id="leaderSection" style="display: none;"></div>
+                <div class="participant-section" id="member2Section" style="display: none;"></div>
 
                 <!-- Terms & Conditions -->
                 <div class="form-group checkbox-group">

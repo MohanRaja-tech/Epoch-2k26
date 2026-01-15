@@ -38,6 +38,9 @@ const NONTECH_EVENTS = [
 const MAX_TECH_EVENTS = 2;
 const MAX_NONTECH_EVENTS = 1;
 
+// Store original form HTML to restore after successful registration
+let originalFormHTML = null;
+
 document.addEventListener('DOMContentLoaded', function () {
     initEventRegistration();
 });
@@ -56,6 +59,12 @@ function initEventRegistration() {
     const member3Section = document.getElementById('member3Section');
 
     if (!modal) return;
+
+    // Store the original form HTML on first load
+    const modalContent = document.querySelector('.event-register-content');
+    if (modalContent && !originalFormHTML) {
+        originalFormHTML = modalContent.innerHTML;
+    }
 
     // Open modal when clicking register button
     registerButtons.forEach(btn => {
@@ -255,8 +264,16 @@ function openEventModal(eventId, eventName, teamMin, teamMax) {
             
         } else {
             // Team events (Binary Battle, Paper Presentation, Prompt Arena, Connection)
-            if (teamNameSection) teamNameSection.style.display = 'block';
             if (participant2Section) participant2Section.style.display = 'block';
+            
+            // Paper Presentation specific - show paperPresentationFields instead of teamNameSection
+            if (isPaperPresentation) {
+                if (paperPresentationFields) paperPresentationFields.style.display = 'block';
+                if (teamNameSection) teamNameSection.style.display = 'none'; // Hide teamNameSection for Paper Presentation
+            } else {
+                // For other team events (Binary Battle, Prompt Arena, Connection)
+                if (teamNameSection) teamNameSection.style.display = 'block';
+            }
             
             // SHOW "Add Participant 3" button ONLY if teamMax > 2
             if (teamMaxInt > 2) {
@@ -286,16 +303,9 @@ function openEventModal(eventId, eventName, teamMin, teamMax) {
                 }
             }
             
-            // Paper Presentation specific
-            if (isPaperPresentation) {
-                if (paperPresentationFields) paperPresentationFields.style.display = 'block';
-                if (participant1Title) {
-                    participant1Title.innerHTML = '<i class="fas fa-user-crown"></i> Participant 1 (Team Leader)';
-                }
-            } else {
-                if (participant1Title) {
-                    participant1Title.innerHTML = '<i class="fas fa-user-crown"></i> Participant 1 (Team Leader)';
-                }
+            // Set participant 1 title
+            if (participant1Title) {
+                participant1Title.innerHTML = '<i class="fas fa-user-crown"></i> Participant 1 (Team Leader)';
             }
         }
     } else {
@@ -334,8 +344,27 @@ function openEventModal(eventId, eventName, teamMin, teamMax) {
 function closeEventModal() {
     const modal = document.getElementById('eventRegisterModal');
     if (modal) {
+        const modalContent = document.querySelector('.event-register-content');
+        
+        // Check if the form has been replaced with success message
+        const formExists = document.getElementById('eventRegistrationForm');
+        
+        // If form doesn't exist, restore the original form HTML
+        if (!formExists && originalFormHTML && modalContent) {
+            modalContent.innerHTML = originalFormHTML;
+            // Re-initialize event listeners after restoring the form
+            initEventRegistration();
+        }
+        
+        // Close the modal
         modal.classList.remove('active');
         document.body.style.overflow = '';
+        
+        // Reset the form if it exists
+        const form = document.getElementById('eventRegistrationForm');
+        if (form) {
+            form.reset();
+        }
         
         // Reset participant 3 section and button visibility with !important
         const participant3Section = document.getElementById('participant3Section');
