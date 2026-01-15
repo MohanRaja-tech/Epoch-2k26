@@ -1,0 +1,627 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="EPOCH 2026 - Squid Games Inspired Inter-College Technical Symposium. Play to Win, Code to Survive!">
+        <meta name="keywords" content="EPOCH, Squid Games, Technical Symposium, College Event, 2026">
+        <meta name="author" content="EPOCH Team">
+        
+        <title>EPOCH 2026 - Squid Games | National level Symposium </title>
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="assests/favicon.png">
+        
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&family=Russo+One&display=swap" rel="stylesheet">
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <!-- AOS Animation Library -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/home.css">
+    </head>
+    <body>
+        
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <div class="logo-symbols">
+                        <span class="symbol-circle"></span>
+                        <span class="symbol-triangle"></span>
+                        <span class="symbol-square"></span>
+                    </div>
+                    <span class="logo-text">EPOCH <span class="highlight">2026</span></span>
+                </a>
+                
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="tech-events.html" class="nav-link"><i class="fas fa-microchip"></i> Tech Events</a></li>
+                    <li><a href="nontech-events.html" class="nav-link"><i class="fas fa-palette"></i> Non-Tech Events</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="registration.html" class="nav-link"><i class="fas fa-user-plus"></i> Register</a></li>
+                    <li><a href="login.html" class="nav-link nav-cta"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Hero Section with Video Background -->
+        <section class="hero" id="home">
+            <!-- Video Background (Will be populated by JavaScript) -->
+            <div class="video-background"></div>
+            
+            <!-- Video Overlay -->
+            <div class="video-overlay"></div>
+            
+            <!-- Fallback Background -->
+            <div class="hero-fallback-bg"></div>
+            
+            <!-- Particles Container -->
+            <div class="particles-container"></div>
+            
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <!-- Welcome Badge -->
+                <div class="hero-badge" data-aos="fade-down">
+                    <i class="fas fa-star"></i>
+                    <span>Welcome to the Games</span>
+                    <i class="fas fa-star"></i>
+                </div>
+                
+                <!-- Squid Game Symbols -->
+                <div class="squid-symbols" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="symbol circle"><i class="fas fa-circle"></i></div>
+                    <div class="symbol triangle"></div>
+                    <div class="symbol square"><i class="fas fa-square"></i></div>
+                </div>
+                
+                <!-- Main Title -->
+                <h1 class="hero-title" data-text="EPOCH" data-aos="fade-up" data-aos-delay="400">
+                    <span class="main-text">EPOCH</span>
+                    <span class="year">2026</span>
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="600">
+                    National level Symposium <br>
+                    IT ASSOCIATION <br>
+                    Kongu Engineering College
+                </p>
+                
+                <!-- Tagline -->
+                <p class="hero-tagline" data-text=" play to Win • Code to Survive" data-aos="fade-up" data-aos-delay="700">
+                    <i class="fas fa-gamepad"></i>
+                    Kongu Engineering College<br>
+                    Play to Win • Code to Survive
+                    <i class="fas fa-gamepad"></i>
+                </p>
+                
+                <!-- Countdown Timer -->
+                <div class="countdown-wrapper" data-aos="fade-up" data-aos-delay="800">
+                    <h3><i class="fas fa-clock"></i> Event Starts In</h3>
+                    <div class="countdown">
+                        <div class="countdown-box">
+                            <span id="days">00</span>
+                            <p>Days</p>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-box">
+                            <span id="hours">00</span>
+                            <p>Hours</p>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-box">
+                            <span id="minutes">00</span>
+                            <p>Minutes</p>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-box">
+                            <span id="seconds">00</span>
+                            <p>Seconds</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="900">
+                    <a href="registration.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-user-plus"></i> Register Now
+                    </a>
+                    <a href="#events" class="btn btn-outline btn-large">
+                        <i class="fas fa-eye"></i> View Events
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <a href="#features">
+                    <span>Scroll</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </section>
+        <!-- Registration Fee Section -->
+<section class="registration-fee-section" id="registration-fee">
+    <div class="container">
+        <div class="fee-content-wrapper">
+            <!-- Main Fee Card -->
+            <div class="fee-main-card" data-aos="zoom-in">
+                <!-- Squid Game Guard Mask Decoration -->
+                <div class="guard-decoration">
+                    <div class="guard-mask circle-guard">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                </div>
+                
+                <div class="fee-header">
+                    <span class="fee-badge">
+                        <i class="fas fa-ticket-alt"></i> Entry Pass
+                    </span>
+                    <h2 class="fee-title">Registration Fee</h2>
+                </div>
+                
+                <div class="fee-price">
+                    <span class="currency">₹</span>
+                    <span class="amount">255</span>
+                    
+                </div>
+                
+                <div class="fee-tagline">
+                    <i class="fas fa-gamepad"></i>
+                    <span>One Pass. Multiple Games. Unlimited Fun!</span>
+                    <i class="fas fa-gamepad"></i>
+                </div>
+            </div>
+            
+            <!-- Benefits Grid -->
+            <div class="fee-benefits-grid">
+                <!-- Benefit 1: Tech Events -->
+                <div class="fee-benefit-card technical" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-icon">
+                        <i class="fas fa-microchip"></i>
+                        <span class="benefit-count">2</span>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Technical Events</h3>
+                        <p>Participate in any <strong>2 Technical Events</strong> of your choice</p>
+                        <ul class="benefit-events">
+                            <li><i class="fas fa-check"></i> Paper Survival</li>
+                            <li><i class="fas fa-check"></i> Binary Battle</li>
+                            <li><i class="fas fa-check"></i> The Prompt Arena</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Benefit 2: Non-Tech Events -->
+                <div class="fee-benefit-card non-technical" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-icon">
+                        <i class="fas fa-palette"></i>
+                        <span class="benefit-count">1</span>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Non-Technical Event</h3>
+                        <p>Participate in any <strong>1 Non-Technical Event</strong> of your choice</p>
+                        <ul class="benefit-events">
+                            <li><i class="fas fa-check"></i> Connection</li>
+                            <li><i class="fas fa-check"></i> Flip Flop</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- EPOCH ID Info Card -->
+            <div class="epoch-id-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="epoch-id-glow"></div>
+                <div class="epoch-id-content">
+                    <div class="epoch-id-icon">
+                        <div class="id-card-visual">
+                            <div class="id-symbols">
+                                <span class="symbol-mini circle"></span>
+                                <span class="symbol-mini triangle"></span>
+                                <span class="symbol-mini square"></span>
+                            </div>
+                            <div class="id-number">EPOCH-ID</div>
+                        </div>
+                    </div>
+                    
+                    <div class="epoch-id-info">
+                        <h3><i class="fas fa-id-badge"></i> Get Your EPOCH ID</h3>
+                        <p>
+                            Register for <strong>EPOCH 2026</strong> to receive your unique 
+                            <span class="highlight">EPOCH ID</span>. This ID is required to 
+                            register for individual events.
+                        </p>
+                        
+                        <div class="registration-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-text">Register for EPOCH 2026</div>
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-text">Receive your EPOCH ID</div>
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-text">Register for Events</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="epoch-id-cta">
+                    <a href="registration.html" class="btn btn-primary btn-large btn-glow">
+                        <i class="fas fa-user-plus"></i> Register Now & Get EPOCH ID
+                    </a>
+                    <p class="cta-note">
+                        <i class="fas fa-info-circle"></i> 
+                        Limited seats available. Register early to secure your spot!
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Additional Perks -->
+            
+        </div>
+    </div>
+    
+    <!-- Background Decorations -->
+    <div class="fee-bg-decoration">
+        <div class="floating-symbol symbol-1"><i class="fas fa-circle"></i></div>
+        <div class="floating-symbol symbol-2">△</div>
+        <div class="floating-symbol symbol-3"><i class="fas fa-square"></i></div>
+        <div class="floating-symbol symbol-4"><i class="fas fa-circle"></i></div>
+    </div>
+</section>
+        <!-- Announcement Bar -->
+        <div class="announcement-bar">
+            <i class="fas fa-bullhorn"></i>
+            <span>🎮 Registrations are now open! Limited seats available.</span>
+        </div>
+        
+        <!-- Features Section -->
+        <section class="features-section" id="features">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-subtitle">
+                        <i class="fas fa-star"></i> Why Join EPOCH 2026 <i class="fas fa-star"></i>
+                    </span>
+                    <h2 class="section-title">Game Features</h2>
+                    <p class="section-description">
+                        Experience the thrill of competition in our Squid Game inspired technical symposium
+                    </p>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Win Prizes</h3>
+                        <p>Compete for exciting prizes worth over ₹22,000</p>
+                    </div>
+                    
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Network</h3>
+                        <p>Connect with students from 50+ colleges nationwide</p>
+                    </div>
+                    
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Learn & Grow</h3>
+                        <p>Enhance your technical skills through challenges</p>
+                    </div>
+                    
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Get Certified</h3>
+                        <p>Receive certificates for participation and wins</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-box" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="stat-icon fas fa-calendar-check"></i>
+                        <h3 class="stat-number" data-target="5" data-suffix="+">0</h3>
+                        <p class="stat-label">Events</p>
+                    </div>
+                    
+                    <div class="stat-box" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="stat-icon fas fa-university"></i>
+                        <h3 class="stat-number" data-target="50" data-suffix="+">0</h3>
+                        <p class="stat-label">Colleges</p>
+                    </div>
+                    
+                    <div class="stat-box" data-aos="zoom-in" data-aos-delay="300">
+                        <i class="stat-icon fas fa-user-graduate"></i>
+                        <h3 class="stat-number" data-target="255" data-suffix="+">0</h3>
+                        <p class="stat-label">Participants</p>
+                    </div>
+                    
+                    <div class="stat-box" data-aos="zoom-in" data-aos-delay="400">
+                        <i class="stat-icon fas fa-rupee-sign"></i>
+                        <h3 class="stat-number" data-target="22000" data-suffix="+">0</h3>
+                        <p class="stat-label">Prize Pool</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Events Navigation Section -->
+        <section class="events-nav-section" id="events">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">
+                <i class="fas fa-gamepad"></i> Choose Your Game <i class="fas fa-gamepad"></i>
+            </span>
+            <h2 class="section-title">Explore Events</h2>
+            <p class="section-description">
+                Select your battlefield - Technical or Non-Technical challenges await
+            </p>
+            <div class="title-underline"></div>
+        </div>
+
+        <!-- Events Navigation Cards -->
+        <div class="events-nav-grid">
+
+            <!-- Technical Events Card -->
+            <a href="tech-events.html" class="event-nav-card technical">
+                <div class="event-nav-bg"></div>
+                <div class="event-nav-content">
+                    <div class="event-nav-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="event-nav-symbols">
+                        <span class="symbol-mini circle"></span>
+                        <span class="symbol-mini triangle"></span>
+                        <span class="symbol-mini square"></span>
+                    </div>
+                    <h3>Technical Events</h3>
+                    <p>Paper survival • Binary battle • The prompt arena</p>
+                    <div class="event-nav-meta">
+                        <span><i class="fas fa-calendar"></i> 3 Events</span>
+                    </div>
+                    <div class="event-nav-cta">
+                        <span>Enter Danger Zone</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="event-nav-glow"></div>
+            </a>
+
+            <!-- Non-Technical Events Card -->
+            <a href="nontech-events.html" class="event-nav-card non-technical">
+                <div class="event-nav-bg"></div>
+                <div class="event-nav-content">
+                    <div class="event-nav-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="event-nav-symbols">
+                        <span class="symbol-mini circle"></span>
+                        <span class="symbol-mini triangle"></span>
+                        <span class="symbol-mini square"></span>
+                    </div>
+                    <h3>Non-Technical Events</h3>
+                    <p>Connection • Flip flop</p>
+                     <center><div class="event-nav-meta">
+                       <span><i class="fas fa-calendar"></i> 2 Events</span>
+                    </div></center>
+                    <div class="event-nav-cta">
+                        <span>Enter Safe Zone</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="event-nav-glow"></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-subtitle">
+                        <i class="fas fa-info-circle"></i> Get to Know Us <i class="fas fa-info-circle"></i>
+                    </span>
+                    <h2 class="section-title">About EPOCH 2026</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-content" data-aos="fade-right">
+                        <h2>Welcome to the Ultimate Challenge</h2>
+                        <p>
+                            EPOCH 2026 is not just another technical symposium - it's a battleground where 
+                            innovation meets competition. Inspired by the intensity and strategy of survival games, 
+                            our event challenges participants to push their limits, think creatively, and emerge victorious.
+                        </p>
+                        <p>
+                            Over the course of two thrilling days, students from colleges across the nation will 
+                            compete in technical and non-technical events, each designed to test different aspects 
+                            of their abilities. From coding marathons to creative challenges, every event is a game, 
+                            and every participant is a player.
+                        </p>
+                        
+                        <div class="about-features">
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div>
+                                    <h4>Innovation First</h4>
+                                    <p>Pushing boundaries of creativity</p>
+                                </div>
+                            </div>
+                            
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div>
+                                    <h4>Competitive Spirit</h4>
+                                    <p>Where champions are made</p>
+                                </div>
+                            </div>
+                            
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div>
+                                    <h4>Networking</h4>
+                                    <p>Connect with brilliant minds</p>
+                                </div>
+                            </div>
+                            
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h4>Learning Experience</h4>
+                                    <p>Gain valuable insights</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-image" data-aos="fade-left">
+                        <div class="about-image-wrapper">
+                            <div class="about-placeholder">
+                                <div class="squid-symbols">
+                                    <div class="symbol circle"><i class="fas fa-circle"></i></div>
+                                    <div class="symbol triangle"></div>
+                                    <div class="symbol square"><i class="fas fa-square"></i></div>
+                                </div>
+                                <p>EPOCH 2026</p>
+                            </div>
+                        </div>
+                        <div class="about-decor about-decor-1"></div>
+                        <div class="about-decor about-decor-2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-subtitle">
+                        <i class="fas fa-envelope"></i> Get in Touch <i class="fas fa-envelope"></i>
+                    </span>
+                    <h2 class="section-title">Contact Information</h2>
+                    <p class="section-description">
+                        Have questions? We're here to help you join the games
+                    </p>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Venue</h3>
+                        <p>Kongu Engineering College<br>Sir CV raman seminar hall ,S & H</p>
+                    </div>
+                    
+                    <div class="contact-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+919876543210">+91 7010437916</a><br>
+                        <a href="tel:+919876543211">+91 8610708272</a></p>
+                    </div>
+                    
+                   
+                    <div class="contact-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Event Dates</h3>
+                        <p>Febraury 7, 2026<br>9:00 AM - 4:00 PM</p>
+                    </div>
+                </div>
+                
+                <!-- Contact CTA -->
+                
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <!-- Brand Column -->
+                    <div class="footer-brand">
+                        <a href="index.html" class="footer-logo">
+                            <div class="logo-symbols">
+                                <span class="symbol-circle"></span>
+                                <span class="symbol-triangle"></span>
+                                <span class="symbol-square"></span>
+                            </div>
+                            <span class="logo-text">EPOCH 2026</span>
+                        </a>
+                        <p>
+                            The ultimate inter-college technical symposium inspired by the Squid Games. 
+                            Where innovation meets competition.
+                        </p>
+                      
+                    </div>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    
+                </div>
+                
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <p>&copy; 2026 EPOCH - Squid Games Symposium. All Rights Reserved.</p>
+                    
+                    
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Toast Container -->
+        <div id="toast-container"></div>
+        
+        <!-- Scripts -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="js/common.js"></script>
+        <script src="js/home.js"></script>
+    </body>
+    </html>

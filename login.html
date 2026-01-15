@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to EPOCH 2026 - Access your player account">
+    <title>Login - EPOCH 2026 | Squid Games Symposium</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&family=Russo+One&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <!-- Login Page Container -->
+    <div class="login-page">
+        <!-- Animated Background Pattern -->
+        <div class="login-bg-pattern"></div>
+
+        <!-- VIP Cards Background -->
+        <div class="vip-cards-bg">
+            <div class="vip-card"></div>
+            <div class="vip-card"></div>
+            <div class="vip-card"></div>
+            <div class="vip-card"></div>
+            <div class="vip-card"></div>
+        </div>
+
+        <!-- Login Container -->
+        <div class="login-container">
+            <div class="login-card">
+                <!-- Card Header -->
+                <div class="login-header">
+                    <div class="login-logo">
+                        <div class="squid-symbols small">
+                            <div class="symbol circle"><i class="fas fa-circle"></i></div>
+                            <div class="symbol triangle"></div>
+                            <div class="symbol square"><i class="fas fa-square"></i></div>
+                        </div>
+                        <h1>EPOCH 2026</h1>
+                        <p class="login-subtitle">Player Access Portal</p>
+                    </div>
+
+                    <div class="player-id-badge">
+                        <i class="fas fa-id-card"></i>
+                        <span>PLAYER LOGIN</span>
+                    </div>
+                </div>
+
+                <!-- Login Body -->
+                <div class="login-body">
+                    <form class="login-form" id="login-form">
+                        <!-- Email Field -->
+                        <div class="form-group">
+                            <label for="login-email">
+                                <i class="fas fa-envelope"></i> Email Address
+                            </label>
+                            <div class="login-input-wrapper">
+                                <input type="email" class="login-input" id="login-email" name="email"
+                                    placeholder="Enter your email address" required>
+                                <i class="login-input-icon fas fa-at"></i>
+                            </div>
+                            <span class="error-message" id="email-error"></span>
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="form-group">
+                            <label for="login-password">
+                                <i class="fas fa-lock"></i> Password
+                            </label>
+                            <div class="login-input-wrapper">
+                                <input type="password" class="login-input" id="login-password" name="password"
+                                    placeholder="Enter your password" required>
+                                <i class="login-input-icon fas fa-key"></i>
+                                <button type="button" class="password-toggle"
+                                    onclick="togglePassword('login-password')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <span class="error-message" id="password-error"></span>
+                        </div>
+
+                        <!-- Remember Me & Forgot Password -->
+                        <div class="login-options">
+                            <label class="remember-me">
+                                <input type="checkbox" class="remember-checkbox" id="remember-me">
+                                <span class="remember-checkmark"></span>
+                                <span class="remember-text">Remember me</span>
+                            </label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+
+                        <!-- Login Button -->
+                        <button type="submit" class="login-btn">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login to Play
+                        </button>
+                    </form>
+
+                </div>
+
+                <!-- Login Footer -->
+                <div class="login-footer">
+                    <p class="signup-prompt">
+                        New to the games?
+                        <a href="registration.html" class="signup-link">Create an account</a>
+                    </p>
+                </div>
+
+                <!-- Loading Overlay -->
+                <div class="login-loading">
+                    <div class="loading-spinner"></div>
+                </div>
+
+                <!-- Success Overlay -->
+                <div class="login-success">
+                    <div class="success-checkmark">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="success-message">Login Successful!</div>
+                    <div class="welcome-player"></div>
+                </div>
+            </div>
+
+            <!-- Back to Home -->
+            <div class="back-home">
+                <a href="index.html" class="btn btn-secondary">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+
+</html>

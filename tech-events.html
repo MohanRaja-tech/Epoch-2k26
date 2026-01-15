@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="EPOCH 2026 Technical Events - Code Combat, Web Warfare, Circuit Survivor and more">
+    <title>Technical Events - EPOCH 2026 | Squid Games Symposium</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&family=Russo+One&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/tech-events.css">
+</head>
+
+<body class="tech-page">
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-symbols">
+                    <span class="symbol-circle"></span>
+                    <span class="symbol-triangle"></span>
+                    <span class="symbol-square"></span>
+                </div>
+                <span class="logo-text">EPOCH <span class="highlight">2026</span></span>
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.html#about" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="tech-events.html" class="nav-link active"><i class="fas fa-microchip"></i> Tech Events</a>
+                </li>
+                <li><a href="nontech-events.html" class="nav-link"><i class="fas fa-palette"></i> Non-Tech Events</a>
+                </li>
+                <li><a href="index.html#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="registration.html" class="nav-link"><i class="fas fa-user-plus"></i> Register</a></li>
+                <li><a href="login.html" class="nav-link nav-cta"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="tech-hero">
+        <!-- Animated Background -->
+        <div class="tech-grid-bg"></div>
+
+        <!-- Glowing Orbs -->
+        <div class="tech-orb tech-orb-1"></div>
+        <div class="tech-orb tech-orb-2"></div>
+        <div class="tech-orb tech-orb-3"></div>
+
+        <!-- Hero Content -->
+        <div class="tech-hero-content">
+            <!-- Danger Badge -->
+            <div class="danger-badge" data-aos="fade-down">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>DANGER ZONE</span>
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+
+            <!-- Title with Glitch Effect -->
+            <h1 class="tech-title" data-text="TECHNICAL EVENTS" data-aos="zoom-in">
+                TECHNICAL EVENTS
+            </h1>
+
+            <p class="tech-subtitle" data-aos="fade-up" data-aos-delay="200">
+                Enter the Red Zone - Where Code Meets Competition
+            </p>
+
+            <p class="tech-description" data-aos="fade-up" data-aos-delay="300">
+                Challenge your technical prowess in our intense coding battles, Prompt posters,
+                and Paper survival challenges. Only the skilled will survive!
+            </p>
+        </div>
+    </section>
+
+    <!-- Terminal Navigation -->
+    <section class="event-terminal-nav">
+        <div class="container">
+            <div class="terminal-window" data-aos="fade-up">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">EPOCH://TECH_EVENTS</span>
+                </div>
+                <div class="terminal-body">
+                    <a href="#paper-survival" class="terminal-link active">Paper_Survival.exe</a>
+                    <a href="#binary-battle" class="terminal-link">Binary_Battle.exe</a>
+                    <a href="#prompt-arena" class="terminal-link">Prompt_Arena.exe</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Events Section -->
+    <section class="tech-events-section">
+        <!-- Circuit Pattern Background -->
+        <div class="circuit-pattern"></div>
+
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">
+                    <i class="fas fa-code"></i> Choose Your Battle <i class="fas fa-code"></i>
+                </span>
+                <h2 class="section-title">Technical Challenges</h2>
+                <p class="section-description">
+                    Each event is a test of skill, logic, and innovation. Choose wisely, play smart!
+                </p>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="tech-events-grid">
+
+                <!-- Event 1: Paper Survival -->
+                <div class="tech-event-card" id="paper-survival" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tech-card-header">
+                        <div class="event-player-badge">
+                            <div class="player-symbol">
+                                <div class="symbol circle"><i class="fas fa-circle"></i></div>
+                            </div>
+                        </div>
+                        <div class="event-status"></div>
+                    </div>
+
+                    <div class="tech-card-body">
+                        <div class="tech-event-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+
+                        <h3 class="tech-event-title">Paper Survival</h3>
+                        <p class="tech-event-tagline">Present your ideas</p>
+
+                        <div class="tech-event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>Team Size</span>
+                                <strong>2-3 Members</strong>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Duration</span>
+                                <strong>9:30am-11:00am</strong>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Difficulty</span>
+                                <strong>High</strong>
+                            </div>
+                        </div>
+
+                        <p class="tech-event-description">
+                            Paper Presentation is an academic and technical event where participants present original or review-based research work on a chosen topic. The objective is to evaluate the participant's depth of understanding, clarity of ideas, analytical ability, and presentation skills. Participants prepare a paper in standard format and present it using slides within a specified time limit, followed by a question-and-answer session with judges.
+                        </p>
+
+                        <div class="tech-event-rules">
+                            <h4><i class="fas fa-list-check"></i> Rules & Requirements</h4>
+                            <ul>
+                                <li>Maximum page limit typically 6–8 </li>
+                                <li>Plagiarism must be minimal</li>
+                                <li>Time limit usually 8–12 minutes for presentation</li>
+                                <li>2–5 minutes for Q&A</li>
+                                <li>Be on venue on time </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tech-card-footer">
+                        <button class="btn btn-primary register-event-btn" 
+                            data-event-id="paper-presentation"
+                            data-event-name="Paper Presentation" 
+                            data-event-team-min="2"
+                            data-event-team-max="3">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+                        <button class="btn btn-secondary"
+                            onclick="alert('Detailed rules will be explained on event day')">
+                            <i class="fas fa-info-circle"></i> More Info
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Event 2: Binary Battle -->
+                <div class="tech-event-card" id="binary-battle" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tech-card-header">
+                        <div class="event-player-badge">
+                            <div class="player-symbol">
+                                <div class="symbol triangle"></div>
+                            </div>
+                        </div>
+                        <div class="event-status"></div>
+                    </div>
+
+                    <div class="tech-card-body">
+                        <div class="tech-event-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+
+                        <h3 class="tech-event-title">Binary Battle</h3>
+                        <p class="tech-event-tagline">Code in different way</p>
+
+                        <div class="tech-event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>Team Size</span>
+                                <strong>2 Members</strong>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Duration</span>
+                                <strong>10:30am-11:30am</strong>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Difficulty</span>
+                                <strong>Medium</strong>
+                            </div>
+                        </div>
+
+                        <p class="tech-event-description">
+                           The Coding Event is a time-bound competitive programming contest designed to test problem-solving ability, logical thinking, and coding skills. Participants are required to solve algorithmic and logical problems using their preferred programming language within a limited duration. Accuracy, optimal solutions, and efficient time management play a major role in securing the top positions.
+                        </p>
+
+                        <div class="tech-event-rules">
+                            <h4><i class="fas fa-list-check"></i> Rules & Requirements</h4>
+                            <ul>
+                                <li>Languages: C,C++,JAVA,Python </li>
+                                <li>Score based on number of correct solutions and total time taken</li>
+                                <li>No internet access during contest</li>
+                                <li>Decision of judges and coordinators will be final</li>
+                                <li>Any malpractice results in immediate elimination</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tech-card-footer">
+                        <button class="btn btn-primary register-event-btn" 
+                            data-event-id="binary-battle"
+                            data-event-name="Binary Battle" 
+                            data-event-team-min="2"
+                            data-event-team-max="2">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+                        <button class="btn btn-secondary"
+                            onclick="alert('Detailed rules will be explained on event day')">
+                            <i class="fas fa-info-circle"></i> More Info
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Event 3: Prompt Arena -->
+                <div class="tech-event-card" id="prompt-arena" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tech-card-header">
+                        <div class="event-player-badge">
+                            <div class="player-symbol">
+                                <div class="symbol square"><i class="fas fa-square"></i></div>
+                            </div>
+                            <span class="player-number">03</span>
+                        </div>
+                        <div class="event-status"></div>
+                    </div>
+
+                    <div class="tech-card-body">
+                        <div class="tech-event-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+
+                        <h3 class="tech-event-title">The Prompt Arena</h3>
+                        <p class="tech-event-tagline">Prompt differently</p>
+
+                        <div class="tech-event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>Team Size</span>
+                                <strong>2 Members</strong>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Duration</span>
+                                <strong>11:30am-12:30pm</strong>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Difficulty</span>
+                                <strong>Hard</strong>
+                            </div>
+                        </div>
+
+                        <p class="tech-event-description">
+                            Poster making using new AI technology. Generate a poster using Best prompt to win.
+                        </p>
+
+                        <div class="tech-event-rules">
+                            <h4><i class="fas fa-list-check"></i> Rules & Requirements</h4>
+                            <ul>
+                                <li>Will be given on the spot or announced in advance</li>
+                                <li>Posters must strictly relate to the theme</li>
+                                <li>Fixed time duration will be provided</li>
+                                <li>Be in venue on time</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tech-card-footer">
+                        <button class="btn btn-primary register-event-btn" 
+                            data-event-id="prompt-arena"
+                            data-event-name="Prompt Arena" 
+                            data-event-team-min="2"
+                            data-event-team-max="2">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+                        <button class="btn btn-secondary"
+                            onclick="alert('Detailed rules will be explained on event day')">
+                            <i class="fas fa-info-circle"></i> More Info
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Coordinators -->
+    <section class="tech-coordinators">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">
+                    <i class="fas fa-headset"></i> Need Help? <i class="fas fa-headset"></i>
+                </span>
+                <h2 class="section-title">Event Coordinators</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="coordinators-grid">
+                <div class="coordinator-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="coordinator-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Mithra</h3>
+                    <p class="coordinator-role">70104 37916</p>
+                    <div class="coordinator-contact">
+                        <a href="tel:+917010437916" aria-label="Phone">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="coordinator-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="coordinator-avatar">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Yunus</h3>
+                    <p class="coordinator-role">70104 99316</p>
+                    <div class="coordinator-contact">
+                        <a href="tel:+917010499316" aria-label="Phone">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="coordinator-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="coordinator-avatar">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3>Dharun Vidhyakar</h3>
+                    <p class="coordinator-role">86107 08272</p>
+                    <div class="coordinator-contact">
+                        <a href="tel:+918610708272" aria-label="Phone">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration CTA -->
+    <section class="tech-register-cta">
+        <div class="container">
+            <div class="cta-box" data-aos="zoom-in">
+                <div class="cta-symbols squid-symbols">
+                    <div class="symbol circle"><i class="fas fa-circle"></i></div>
+                    <div class="symbol triangle"></div>
+                    <div class="symbol square"><i class="fas fa-square"></i></div>
+                </div>
+
+                <h2>
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Ready to Enter the Danger Zone?
+                    <i class="fas fa-exclamation-triangle"></i>
+                </h2>
+                <p>
+                    Register now and prove your technical skills. Limited seats available for each event!
+                </p>
+
+                <div class="cta-buttons">
+                    <a href="registration.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-user-plus"></i> Register Now
+                    </a>
+                    <a href="nontech-events.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-palette"></i> View Non-Tech Events
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-symbols">
+                            <span class="symbol-circle"></span>
+                            <span class="symbol-triangle"></span>
+                            <span class="symbol-square"></span>
+                        </div>
+                        <span class="logo-text">EPOCH 2026</span>
+                    </a>
+                    <p>
+                        The ultimate inter-college technical symposium.
+                        Where innovation meets competition.
+                    </p>
+                    <div class="footer-social"></div>
+                </div>
+
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <p>&copy; 2026 EPOCH - Technical Events. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Event Registration Modal -->
+    <div class="event-register-modal" id="eventRegisterModal">
+        <div class="event-register-content">
+            <button class="close-modal" id="closeEventModal">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <div class="squid-symbols small">
+                    <div class="symbol circle"><i class="fas fa-circle"></i></div>
+                    <div class="symbol triangle"></div>
+                    <div class="symbol square"><i class="fas fa-square"></i></div>
+                </div>
+                <h2 id="modalEventName">Event Registration</h2>
+                <p class="modal-subtitle">Fill in your details to participate</p>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="eventRegistrationForm" class="event-form">
+                <!-- Hidden Event Info -->
+                <input type="hidden" id="eventId" name="eventId">
+                <input type="hidden" id="eventName" name="eventName">
+                <input type="hidden" id="eventTeamMin" name="eventTeamMin">
+                <input type="hidden" id="eventTeamMax" name="eventTeamMax">
+
+                <!-- Event Info Display -->
+                <div class="event-info-box">
+                    <div class="info-item">
+                        <i class="fas fa-gamepad"></i>
+                        <span id="displayEventName">Event Name</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-users"></i>
+                        <span id="displayTeamSize">Team Size</span>
+                    </div>
+                </div>
+
+                <!-- Team Name Section (Common for all events) -->
+                <div class="team-name-section" id="teamNameSection">
+                    <div class="form-group">
+                        <label for="teamName">Team Name *</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-users-cog"></i>
+                            <input type="text" id="teamName" name="teamName"
+                                placeholder="Enter your team name">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paper Title (Only for Paper Presentation) -->
+                <div class="paper-title-section" id="paperPresentationFields" style="display: none;">
+                    <div class="form-group">
+                        <label for="paperTitle">Paper Title *</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-file-alt"></i>
+                            <input type="text" id="paperTitle" name="paperTitle"
+                                placeholder="Enter your paper title" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Participant 1 Section (Team Leader) -->
+                <div class="participant-section" id="participant1Section">
+                    <h4><i class="fas fa-user-crown"></i> Participant 1 (Team Leader)</h4>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="participant1EpochId">EPOCH ID *</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-id-badge"></i>
+                                <input type="text" id="participant1EpochId" name="participant1EpochId"
+                                    placeholder="e.g., EPOCH001">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="participant1Name">Name *</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="participant1Name" name="participant1Name"
+                                    placeholder="Enter full name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="participant1College">College *</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-university"></i>
+                                <input type="text" id="participant1College" name="participant1College"
+                                    placeholder="College name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="participant1Mobile">Mobile Number *</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="participant1Mobile" name="participant1Mobile"
+                                    placeholder="10-digit number">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Participant 2 Section -->
+                <div class="participant-section" id="participant2Section">
+                    <h4><i class="fas fa-user"></i> Participant 2</h4>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="participant2EpochId">EPOCH ID *</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-id-badge"></i>
+                                <input type="text" id="participant2EpochId" name="participant2EpochId"
+                                    placeholder="e.g., EPOCH002">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="participant2Name">Name *</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="participant2Name" name="participant2Name"
+                                    placeholder="Enter full name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="participant2College">College *</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-university"></i>
+                                <input type="text" id="participant2College" name="participant2College"
+                                    placeholder="College name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="participant2Mobile">Mobile Number *</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="participant2Mobile" name="participant2Mobile"
+                                    placeholder="10-digit number">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Participant 3 Section (Optional - shown via button) -->
+                <div class="participant-section" id="participant3Section" style="display: none;">
+                    <h4><i class="fas fa-user"></i> Participant 3 <span class="optional-tag">(Optional)</span></h4>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="participant3EpochId">EPOCH ID</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-id-badge"></i>
+                                <input type="text" id="participant3EpochId" name="participant3EpochId"
+                                    placeholder="e.g., EPOCH003">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="participant3Name">Name</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="participant3Name" name="participant3Name"
+                                    placeholder="Enter full name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="participant3College">College</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-university"></i>
+                                <input type="text" id="participant3College" name="participant3College"
+                                    placeholder="College name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="participant3Mobile">Mobile Number</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="participant3Mobile" name="participant3Mobile"
+                                    placeholder="10-digit number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Remove Participant 3 Button -->
+                    <button type="button" class="btn btn-outline btn-full remove-participant-btn" id="removeParticipant3Btn">
+                        <i class="fas fa-minus"></i> Remove Participant 3
+                    </button>
+                </div>
+
+                <!-- Add Participant Button (Only shown when max > min) -->
+                <button type="button" class="btn btn-outline btn-full add-participant-btn" id="addParticipant3Btn" style="display: none;">
+                    <i class="fas fa-plus"></i> Add Participant 3
+                </button>
+
+                <!-- Terms & Conditions -->
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#" target="_blank">event rules</a> and <a href="#"
+                            target="_blank">terms & conditions</a>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-large btn-full" id="submitEventReg">
+                    <i class="fas fa-check-circle"></i> Confirm Registration
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/event-registration.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Terminal navigation smooth scroll
+        document.querySelectorAll('.terminal-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+
+                if (target) {
+                    // Update active state
+                    document.querySelectorAll('.terminal-link').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+
+                    // Smooth scroll
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
