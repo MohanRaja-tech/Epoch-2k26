@@ -135,7 +135,7 @@ def register():
         data = request.form.to_dict()
         
         # Required fields validation
-        required_fields = ['name', 'email', 'password', 'phone', 'college', 'department', 'year', 'transactionId']
+        required_fields = ['name', 'email', 'password', 'phone', 'college', 'department', 'year', 'foodPriority', 'transactionId']
         for field in required_fields:
             if field not in data or not data[field].strip():
                 return jsonify({
@@ -216,6 +216,7 @@ def register():
             'college': data['college'].strip(),
             'department': data['department'].strip(),
             'yearOfStudy': data['year'].strip(),
+            'foodPriority': data['foodPriority'].strip(),
             'transactionId': data['transactionId'].strip(),
             'paymentScreenshot': payment_screenshot,
             'epochId': epoch_id,
