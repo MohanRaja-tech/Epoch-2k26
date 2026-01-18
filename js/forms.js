@@ -436,7 +436,7 @@ function initPasswordStrength() {
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
-        <span class="strength-text">Password Strength</span>
+        
     `;
 
     // Append to password field
@@ -1980,5 +1980,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ All form initializations complete');
 });
+
 
 console.log('📝 Forms loaded successfully!');
