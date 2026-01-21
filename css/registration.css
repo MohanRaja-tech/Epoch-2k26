@@ -1460,3 +1460,35 @@
 
 .squid-symbols .symbol.square { border-radius: var(--radius-sm); }
 .squid-symbols .symbol.square i { font-size: 0.8rem; }
+/* ============================================
+   reCAPTCHA Container
+   ============================================ */
+.recaptcha-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(237, 29, 126, 0.2);
+}
+
+.recaptcha-container .g-recaptcha {
+    transform: scale(0.95);
+    transform-origin: center;
+}
+
+.recaptcha-container .field-error {
+    margin-top: 0.5rem;
+    text-align: center;
+    color: #ff4757;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+    .recaptcha-container .g-recaptcha {
+        transform: scale(0.85);
+    }
+}

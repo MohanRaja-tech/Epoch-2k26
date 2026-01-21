@@ -23,7 +23,9 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/registration.css">
-    
+
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -126,7 +128,7 @@
                                         <div class="floating-label">
                                             <input type="text" class="floating-input" id="full-name" name="name"
                                                 placeholder=" " required>
-                                            <label for="full-name">Full Name *</label>
+                                            <label for="full-name">Full Name with Initials *</label>
                                         </div>
                                         <span class="field-error" id="name-error"></span>
                                     </div>
@@ -153,43 +155,31 @@
 
                                     <!-- Password -->
                                     <div class="form-group">
-    <div class="floating-label">
-        <input 
-            type="password" 
-            class="floating-input password-field" 
-            id="password" 
-            name="password"
-            placeholder=" " 
-            autocomplete="new-password" 
-            required
-        >
-        <label for="password">Password *</label>
-        <button type="button" class="password-toggle" data-target="password">
-            <i class="fas fa-eye"></i>
-        </button>
-    </div>
-    <span class="field-error" id="password-error"></span>
-</div>
+                                        <div class="floating-label">
+                                            <input type="password" class="floating-input password-field" id="password"
+                                                name="password" placeholder=" " autocomplete="new-password" required>
+                                            <label for="password">Password *</label>
+                                            <button type="button" class="password-toggle" data-target="password">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <span class="field-error" id="password-error"></span>
+                                    </div>
 
-<!-- Confirm Password -->
-<div class="form-group">
-    <div class="floating-label">
-        <input 
-            type="password" 
-            class="floating-input password-field" 
-            id="confirm-password" 
-            name="confirm-password"
-            placeholder=" " 
-            autocomplete="new-password" 
-            required
-        >
-        <label for="confirm-password">Confirm Password *</label>
-        <button type="button" class="password-toggle" data-target="confirm-password">
-            <i class="fas fa-eye"></i>
-        </button>
-    </div>
-    <span class="field-error" id="confirm-password-error"></span>
-</div>
+                                    <!-- Confirm Password -->
+                                    <div class="form-group">
+                                        <div class="floating-label">
+                                            <input type="password" class="floating-input password-field"
+                                                id="confirm-password" name="confirm-password" placeholder=" "
+                                                autocomplete="new-password" required>
+                                            <label for="confirm-password">Confirm Password *</label>
+                                            <button type="button" class="password-toggle"
+                                                data-target="confirm-password">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <span class="field-error" id="confirm-password-error"></span>
+                                    </div>
 
                                 </div><!-- Close form-grid -->
 
@@ -282,134 +272,142 @@
                             </div>
 
                             <!-- Step 3: Payment Details -->
-<div class="form-step" id="step-3">
-    <div class="step-header">
-        <h2 class="step-title">
-            <i class="fas fa-credit-card"></i>
-            Payment Details
-        </h2>
-        <p class="step-description">
-            Complete your payment and upload the screenshot
-        </p>
-    </div>
+                            <div class="form-step" id="step-3">
+                                <div class="step-header">
+                                    <h2 class="step-title">
+                                        <i class="fas fa-credit-card"></i>
+                                        Payment Details
+                                    </h2>
+                                    <p class="step-description">
+                                        Complete your payment and upload the screenshot
+                                    </p>
+                                </div>
 
-    <div class="payment-info-box">
-        <div class="payment-info-header">
-            <i class="fas fa-info-circle"></i>
-            <h4>Payment Instructions</h4>
-        </div>
-        <div class="payment-info-content">
-            <p>Please make your payment using one of the following methods:</p>
-            <ul>
-                <li><strong>Account NO:</strong> 1247172000000828</li>
-                <li><strong>IFSC Code:</strong> KVBL0001247</li>
-                <li><strong>Account Name:</strong> KONGU COLLEGE OF ENGINEERING</li>
-                <li>Keep the transaction screenshot ready while coming to the event.</li>
-                <li>Fake payment or other unnecessary action leads to disqualification</li>
-            </ul>
-            <p class="payment-note">Registration Fee: <strong>₹255</strong></p>
-        </div>
-    </div>
+                                <div class="payment-info-box">
+                                    <div class="payment-info-header">
+                                        <i class="fas fa-info-circle"></i>
+                                        <h4>Payment Instructions</h4>
+                                    </div>
+                                    <div class="payment-info-content">
+                                        <p>Please make your payment using one of the following methods:</p>
+                                        <ul>
+                                            <li><strong>Account NO:</strong> 1247172000000828</li>
+                                            <li><strong>IFSC Code:</strong> KVBL0001247</li>
+                                            <li><strong>Account Name:</strong> KONGU COLLEGE OF ENGINEERING</li>
+                                            <li>Keep the transaction screenshot ready while coming to the event.</li>
+                                            <li>Fake payment or other unnecessary action leads to disqualification</li>
+                                        </ul>
+                                        <p class="payment-note">Registration Fee: <strong>₹255</strong></p>
+                                    </div>
+                                </div>
 
-    <div class="form-grid">
-        <!-- Transaction ID -->
-        <div class="form-group full-width">
-            <div class="floating-label">
-                <input type="text" class="floating-input" id="transaction-id"
-                    name="transactionId" placeholder=" " required>
-                <label for="transaction-id">Transaction ID *</label>
-            </div>
-            <span class="field-error" id="transaction-error"></span>
-        </div>
+                                <div class="form-grid">
+                                    <!-- Transaction ID -->
+                                    <div class="form-group full-width">
+                                        <div class="floating-label">
+                                            <input type="text" class="floating-input" id="transaction-id"
+                                                name="transactionId" placeholder=" " required>
+                                            <label for="transaction-id">Transaction ID *</label>
+                                        </div>
+                                        <span class="field-error" id="transaction-error"></span>
+                                    </div>
 
-        <!-- Payment Screenshot -->
-        <div class="form-group full-width">
-            <div class="file-upload-area" id="payment-upload-area">
-                <input type="file" class="file-input" id="payment-screenshot"
-                    name="paymentScreenshot" accept="image/*" required>
-                <div class="file-upload-content">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p class="file-upload-text">Click to upload or drag and drop</p>
-                    <p class="file-upload-hint">Payment Screenshot (Max 100KB)</p>
-                </div>
-                <div class="file-preview" id="file-preview">
-                    <img id="preview-image" src="" alt="Preview">
-                    <button type="button" class="remove-file-btn" id="remove-file">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <span class="field-error" id="screenshot-error"></span>
-        </div>
-    </div>
+                                    <!-- Payment Screenshot -->
+                                    <div class="form-group full-width">
+                                        <div class="file-upload-area" id="payment-upload-area">
+                                            <input type="file" class="file-input" id="payment-screenshot"
+                                                name="paymentScreenshot" accept="image/*" required>
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-cloud-upload-alt"></i>
+                                                <p class="file-upload-text">Click to upload or drag and drop</p>
+                                                <p class="file-upload-hint">Payment Screenshot (Max 100KB)</p>
+                                            </div>
+                                            <div class="file-preview" id="file-preview">
+                                                <img id="preview-image" src="" alt="Preview">
+                                                <button type="button" class="remove-file-btn" id="remove-file">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <span class="field-error" id="screenshot-error"></span>
+                                    </div>
+                                </div>
 
-    <!-- WhatsApp Group Section - NEW -->
-    <div class="whatsapp-join-section">
-        <div class="whatsapp-card">
-            <div class="whatsapp-icon-wrapper">
-                <i class="fab fa-whatsapp"></i>
-            </div>
-            <div class="whatsapp-content">
-                <h3><i class="fab fa-whatsapp"></i> Join EPOCH 2026 WhatsApp Group</h3>
-                <p>Get instant updates, connect with participants, and stay informed about the event!</p>
-                <ul class="whatsapp-benefits">
-                    <li><i class="fas fa-check"></i> Event announcements & updates</li>
-                    <li><i class="fas fa-check"></i> Connect with other participants</li>
-                    <li><i class="fas fa-check"></i> Quick support from organizers</li>
-                    <li><i class="fas fa-check"></i> Important reminders & schedules</li>
-                </ul>
-                <div class="whatsapp-action">
-                    <a href="https://chat.whatsapp.com/BTHm3kwsGdGASxUQ2VuWzS" 
-                       target="_blank" 
-                       class="btn-whatsapp-join"
-                       onclick="trackWhatsAppClick()">
-                        <i class="fab fa-whatsapp"></i>
-                        Join WhatsApp Group
-                    </a>
-                    <p class="whatsapp-important">
-                        <i class="fas fa-exclamation-circle"></i> 
-                        Important - Join now for event updates!
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+                                <!-- WhatsApp Group Section - NEW -->
+                                <div class="whatsapp-join-section">
+                                    <div class="whatsapp-card">
+                                        <div class="whatsapp-icon-wrapper">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </div>
+                                        <div class="whatsapp-content">
+                                            <h3><i class="fab fa-whatsapp"></i> Join EPOCH 2026 WhatsApp Group</h3>
+                                            <p>Get instant updates, connect with participants, and stay informed about
+                                                the event!</p>
+                                            <ul class="whatsapp-benefits">
+                                                <li><i class="fas fa-check"></i> Event announcements & updates</li>
+                                                <li><i class="fas fa-check"></i> Connect with other participants</li>
+                                                <li><i class="fas fa-check"></i> Quick support from organizers</li>
+                                                <li><i class="fas fa-check"></i> Important reminders & schedules</li>
+                                            </ul>
+                                            <div class="whatsapp-action">
+                                                <a href="https://chat.whatsapp.com/BTHm3kwsGdGASxUQ2VuWzS"
+                                                    target="_blank" class="btn-whatsapp-join"
+                                                    onclick="trackWhatsAppClick()">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                    Join WhatsApp Group
+                                                </a>
+                                                <p class="whatsapp-important">
+                                                    <i class="fas fa-exclamation-circle"></i>
+                                                    Important - Join now for event updates!
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-    <!-- Terms and Conditions -->
-    <div class="terms-section">
-        <div class="terms-content">
-            <h4>Terms & Conditions</h4>
-            <p>By registering for EPOCH 2026, you agree to:</p>
-            <ul>
-                <li>Follow all event rules and regulations</li>
-                <li>Maintain professional conduct during the event</li>
-                <li>Respect fellow participants and organizers</li>
-                <li>Abide by the college code of conduct</li>
-                <li>Accept judges' decisions as final</li>
-            </ul>
-        </div>
-        <label class="terms-checkbox-wrapper">
-            <input type="checkbox" class="terms-checkbox" id="terms" name="terms" required>
-            <span class="terms-checkmark"></span>
-            <span class="terms-label">
-                I agree to the <a href="#">Terms & Conditions</a> and
-                <a href="#">Privacy Policy</a> *
-            </span>
-        </label>
-        <span class="field-error" id="terms-error"></span>
-    </div>
+                                <!-- Terms and Conditions -->
+                                <div class="terms-section">
+                                    <div class="terms-content">
+                                        <h4>Terms & Conditions</h4>
+                                        <p>By registering for EPOCH 2026, you agree to:</p>
+                                        <ul>
+                                            <li>Follow all event rules and regulations</li>
+                                            <li>Maintain professional conduct during the event</li>
+                                            <li>Respect fellow participants and organizers</li>
+                                            <li>Abide by the college code of conduct</li>
+                                            <li>Accept judges' decisions as final</li>
+                                        </ul>
+                                    </div>
+                                    <label class="terms-checkbox-wrapper">
+                                        <input type="checkbox" class="terms-checkbox" id="terms" name="terms" required>
+                                        <span class="terms-checkmark"></span>
+                                        <span class="terms-label">
+                                            I agree to the <a href="#">Terms & Conditions</a> and
+                                            <a href="#">Privacy Policy</a> *
+                                        </span>
+                                    </label>
+                                    <span class="field-error" id="terms-error"></span>
+                                </div>
 
-    <div class="form-navigation">
-        <button type="button" class="nav-btn prev">
-            <i class="fas fa-arrow-left"></i>
-            Previous
-        </button>
-        <button type="submit" class="nav-btn submit">
-            <i class="fas fa-user-plus"></i>
-            Complete Registration
-        </button>
-    </div>
-</div>
+                                <!-- reCAPTCHA Widget -->
+                                <div class="recaptcha-container">
+                                    <div class="g-recaptcha" data-sitekey="6LeBa1EsAAAAAG7Q5y--rmM8vMqWH5EZwbE8feKK"
+                                        data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired">
+                                    </div>
+                                    <span class="field-error" id="recaptcha-error"></span>
+                                </div>
+
+                                <div class="form-navigation">
+                                    <button type="button" class="nav-btn prev">
+                                        <i class="fas fa-arrow-left"></i>
+                                        Previous
+                                    </button>
+                                    <button type="submit" class="nav-btn submit">
+                                        <i class="fas fa-user-plus"></i>
+                                        Complete Registration
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -462,24 +460,24 @@
     <script>
         // Debug script to test button functionality
         console.log('🔍 Debug script loaded');
-        
+
         // Test after a short delay to ensure DOM is ready
-        setTimeout(function() {
+        setTimeout(function () {
             console.log('🔍 Testing button presence...');
             const nextButtons = document.querySelectorAll('.nav-btn.next');
             const form = document.getElementById('registration-form');
             console.log('Found next buttons:', nextButtons.length);
             console.log('Found registration form:', !!form);
-            
+
             if (nextButtons.length === 0) {
                 console.error('❌ No next buttons found!');
             } else {
                 console.log('✅ Next buttons found:', nextButtons);
-                
+
                 // Add a test click handler
                 nextButtons.forEach((btn, index) => {
                     console.log(`Adding test handler to button ${index}`);
-                    btn.addEventListener('click', function() {
+                    btn.addEventListener('click', function () {
                         console.log('🎯 BUTTON CLICKED! Index:', index);
                     });
                 });
@@ -489,12 +487,12 @@
 
     <script>
         // Password Toggle Function
-        document.querySelectorAll('.password-toggle').forEach(function(button) {
-            button.addEventListener('click', function() {
+        document.querySelectorAll('.password-toggle').forEach(function (button) {
+            button.addEventListener('click', function () {
                 const floatingLabel = this.parentElement;
                 const input = floatingLabel.querySelector('.password-field');
                 const icon = this.querySelector('i');
-                
+
                 if (input.type === 'password') {
                     input.type = 'text';
                     icon.classList.remove('fa-eye');
@@ -504,7 +502,7 @@
                     icon.classList.remove('fa-eye-slash');
                     icon.classList.add('fa-eye');
                 }
-                
+
                 // Keep focus on input
                 input.focus();
             });

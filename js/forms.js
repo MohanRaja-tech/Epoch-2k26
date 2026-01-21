@@ -22,6 +22,13 @@ async function handleRegistration(e) {
         return;
     }
 
+    // Validate reCAPTCHA
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+        showFieldError('recaptcha', 'Please complete the reCAPTCHA verification');
+        return;
+    }
+
     // Validate payment screenshot
     const screenshotInput = form.querySelector('#payment-screenshot');
     if (!screenshotInput || !screenshotInput.files.length) {
@@ -37,6 +44,9 @@ async function handleRegistration(e) {
         // Create FormData for file upload
         const formDataObj = new FormData(form);
 
+        // Add reCAPTCHA response to FormData
+        formDataObj.append('g-recaptcha-response', recaptchaResponse);
+
         // Call Flask API
         const response = await fetch('/api/register', {
             method: 'POST',
@@ -51,6 +61,8 @@ async function handleRegistration(e) {
                 showRegistrationClosedPopup(result.message);
                 return;
             }
+            // Reset reCAPTCHA on failure
+            grecaptcha.reset();
             throw new Error(result.message || 'Registration failed');
         }
 
@@ -210,7 +222,7 @@ function updateNavigationAlignment() {
         if (navigation) {
             const prevBtn = navigation.querySelector('.nav-btn.prev');
             const hasNoPrevButton = !prevBtn || window.getComputedStyle(prevBtn).display === 'none';
-            
+
             if (hasNoPrevButton) {
                 navigation.classList.add('only-next');
             } else {
@@ -236,7 +248,7 @@ function validateStep(step) {
     requiredFields.forEach((field, index) => {
         const fieldValue = field.value ? field.value.trim() : '';
         console.log(`  Field ${index + 1}: ${field.id} = "${fieldValue}" (empty: ${!fieldValue})`);
-        
+
         clearFieldError(field.id);
 
         if (!fieldValue) {
@@ -246,30 +258,83 @@ function validateStep(step) {
             console.log(`  ❌ Field ${field.id} is empty - showing error`);
             showFieldError(field.id, `${fieldName} is required`);
             isValid = false;
-        } else if (field.type === 'email' && !validateEmail(fieldValue)) {
-            console.log(`  ❌ Field ${field.id} has invalid email`);
-            showFieldError(field.id, 'Please enter a valid email address');
-            isValid = false;
-        } else if (field.type === 'tel' && !validatePhone(fieldValue)) {
-            console.log(`  ❌ Field ${field.id} has invalid phone`);
-            showFieldError(field.id, 'Please enter a valid 10-digit phone number');
-            isValid = false;
-        } else if (field.id === 'confirm-password') {
+        }
+        // Name validation (full-name field)
+        else if (field.id === 'full-name') {
+            const nameValidation = validateName(fieldValue);
+            if (!nameValidation.valid) {
+                console.log(`  ❌ Field ${field.id} has invalid name`);
+                showFieldError(field.id, nameValidation.message);
+                isValid = false;
+            }
+        }
+        // Email validation
+        else if (field.type === 'email') {
+            if (!validateEmail(fieldValue)) {
+                console.log(`  ❌ Field ${field.id} has invalid email`);
+                showFieldError(field.id, 'Please enter a valid email address');
+                isValid = false;
+            }
+            // Check for fake email patterns
+            const fakeEmailPatterns = /^(user\d+|test\d*|fake\d*|admin\d*|abc\d*)@/i;
+            if (fakeEmailPatterns.test(fieldValue)) {
+                console.log(`  ❌ Field ${field.id} looks like a fake email`);
+                showFieldError(field.id, 'Please enter your real email address');
+                isValid = false;
+            }
+        }
+        // Phone validation
+        else if (field.type === 'tel') {
+            if (!validatePhone(fieldValue)) {
+                console.log(`  ❌ Field ${field.id} has invalid phone`);
+                showFieldError(field.id, 'Please enter a valid 10-digit Indian mobile number');
+                isValid = false;
+            }
+            // Check for fake phone patterns like 9800000021
+            const fakePhonePatterns = /^(\d)\1{5,}|^98000000|^12345|^00000/;
+            if (fakePhonePatterns.test(fieldValue)) {
+                console.log(`  ❌ Field ${field.id} looks like a fake phone`);
+                showFieldError(field.id, 'Please enter your real phone number');
+                isValid = false;
+            }
+        }
+        // Password validation
+        else if (field.id === 'password') {
+            const passwordValidation = validatePassword(fieldValue);
+            if (!passwordValidation.valid) {
+                console.log(`  ❌ Field ${field.id} has weak password`);
+                showFieldError(field.id, passwordValidation.message);
+                isValid = false;
+            }
+        }
+        // Confirm password validation
+        else if (field.id === 'confirm-password') {
             const password = document.getElementById('password');
             if (password && fieldValue !== password.value) {
                 console.log(`  ❌ Field ${field.id} doesn't match password`);
                 showFieldError(field.id, 'Passwords do not match');
                 isValid = false;
             }
-        } else if (field.id === 'password') {
-            // Check minimum password length
-            if (fieldValue.length < 6) {
-                console.log(`  ❌ Field ${field.id} is too short`);
-                showFieldError(field.id, 'Password must be at least 6 characters');
+        }
+        // College name validation
+        else if (field.id === 'college-name') {
+            const collegeValidation = validateCollege(fieldValue);
+            if (!collegeValidation.valid) {
+                console.log(`  ❌ Field ${field.id} has invalid college`);
+                showFieldError(field.id, collegeValidation.message);
                 isValid = false;
             }
         }
-        
+        // Transaction ID validation
+        else if (field.id === 'transaction-id') {
+            const txnValidation = validateTransactionId(fieldValue);
+            if (!txnValidation.valid) {
+                console.log(`  ❌ Field ${field.id} has invalid transaction ID`);
+                showFieldError(field.id, txnValidation.message);
+                isValid = false;
+            }
+        }
+
         if (isValid) {
             console.log(`  ✅ Field ${field.id} is valid`);
         }
@@ -383,24 +448,24 @@ function initPasswordToggles() {
     console.log('Initializing password toggles...');
     const toggles = document.querySelectorAll('.password-toggle');
     console.log('Found', toggles.length, 'password toggles');
-    
+
     toggles.forEach((toggle, index) => {
         console.log('Setting up toggle', index + 1);
-        
+
         // Remove any existing listeners
         const newToggle = toggle.cloneNode(true);
         toggle.parentNode.replaceChild(newToggle, toggle);
-        
+
         newToggle.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             console.log('Password toggle clicked');
-            
+
             // Find the input field
             const inputWrapper = newToggle.closest('.login-input-wrapper, .floating-label');
             const input = inputWrapper ? inputWrapper.querySelector('input[type="password"], input[type="text"]') : null;
             const icon = newToggle.querySelector('i');
-            
+
             console.log('Found input:', !!input);
             console.log('Found icon:', !!icon);
 
@@ -419,7 +484,7 @@ function initPasswordToggles() {
             }
         });
     });
-    
+
     console.log('Password toggles initialized');
 }
 
@@ -633,9 +698,9 @@ function showFieldError(fieldId, message) {
     let errorId = fieldId + '-error';
     // Handle special cases like 'full-name' -> 'name-error'
     if (fieldId === 'full-name') errorId = 'name-error';
-    
+
     let errorEl = document.getElementById(errorId);
-    
+
     // If not found by ID, look for .field-error in parent
     if (!errorEl) {
         const formGroup = field.closest('.form-group');
@@ -643,7 +708,7 @@ function showFieldError(fieldId, message) {
             errorEl = formGroup.querySelector('.field-error');
         }
     }
-    
+
     // If still not found, create one
     if (!errorEl) {
         errorEl = document.createElement('span');
@@ -666,13 +731,13 @@ function clearFieldError(fieldId) {
     if (!field) return;
 
     field.classList.remove('input-error');
-    
+
     // Look for error element with ID pattern
     let errorId = fieldId + '-error';
     if (fieldId === 'full-name') errorId = 'name-error';
-    
+
     let errorEl = document.getElementById(errorId);
-    
+
     // If not found by ID, look for .field-error in parent
     if (!errorEl) {
         const formGroup = field.closest('.form-group');
@@ -680,7 +745,7 @@ function clearFieldError(fieldId) {
             errorEl = formGroup.querySelector('.field-error');
         }
     }
-    
+
     if (errorEl) {
         errorEl.classList.remove('show');
         errorEl.textContent = '';
@@ -745,11 +810,87 @@ function createConfetti() {
 }
 
 function validateEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    // More comprehensive email validation
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
 }
 
 function validatePhone(phone) {
-    return /^[0-9]{10}$/.test(phone);
+    // Remove any spaces or dashes
+    const cleanPhone = phone.replace(/[\s-]/g, '');
+    // Must be exactly 10 digits and not start with 0 or 1
+    return /^[6-9][0-9]{9}$/.test(cleanPhone);
+}
+
+function validateName(name) {
+    // Name should be at least 3 characters, contain only letters and spaces
+    // Should not be generic like "user1", "test", etc.
+    const cleanName = name.trim();
+
+    // Check minimum length
+    if (cleanName.length < 3) return { valid: false, message: 'Name must be at least 3 characters' };
+
+    // Check for only letters and spaces
+    if (!/^[a-zA-Z\s.]+$/.test(cleanName)) return { valid: false, message: 'Name should contain only letters' };
+
+    // Check for fake patterns like "user1", "test", "asdf"
+    const fakePatterns = /^(user\d*|test\d*|admin\d*|asdf|qwerty|abc|xyz|aaa|bbb|name|fake)$/i;
+    if (fakePatterns.test(cleanName.replace(/\s/g, ''))) {
+        return { valid: false, message: 'Please enter your real name' };
+    }
+
+    // Check if name has at least 2 parts (first and last name)
+    const nameParts = cleanName.split(/\s+/).filter(part => part.length > 0);
+    if (nameParts.length < 2) {
+        return { valid: false, message: 'Please enter your full name (first & last name)' };
+    }
+
+    return { valid: true };
+}
+
+function validateTransactionId(txnId) {
+    // Transaction ID should be alphanumeric and have reasonable length
+    const cleanTxn = txnId.trim();
+
+    if (cleanTxn.length < 8) return { valid: false, message: 'Transaction ID seems too short' };
+    if (cleanTxn.length > 30) return { valid: false, message: 'Transaction ID seems too long' };
+
+    // Check for fake patterns
+    const fakePatterns = /^(test|fake|123|abc|txn|trans|0+|1+)$/i;
+    if (fakePatterns.test(cleanTxn)) {
+        return { valid: false, message: 'Please enter a valid transaction ID' };
+    }
+
+    return { valid: true };
+}
+
+function validatePassword(password) {
+    if (password.length < 6) {
+        return { valid: false, message: 'Password must be at least 6 characters' };
+    }
+    if (password.length > 50) {
+        return { valid: false, message: 'Password is too long' };
+    }
+    // Check for common weak passwords
+    const weakPasswords = ['123456', 'password', 'qwerty', 'abc123', '111111', '123123'];
+    if (weakPasswords.includes(password.toLowerCase())) {
+        return { valid: false, message: 'This password is too common. Please choose a stronger one.' };
+    }
+    return { valid: true };
+}
+
+function validateCollege(college) {
+    const cleanCollege = college.trim();
+
+    if (cleanCollege.length < 5) return { valid: false, message: 'Please enter a valid college name' };
+
+    // Check for fake patterns
+    const fakePatterns = /^(test|fake|abc|xyz|college|university|school)$/i;
+    if (fakePatterns.test(cleanCollege)) {
+        return { valid: false, message: 'Please enter your actual college name' };
+    }
+
+    return { valid: true };
 }
 
 function generatePlayerNumber() {
@@ -1859,35 +2000,35 @@ window.registerAnother = registerAnother;
 async function handleLogin(e) {
     e.preventDefault();
     console.log('Login handler called');
-    
+
     const form = e.target;
     const emailInput = form.querySelector('#login-email');
     const passwordInput = form.querySelector('#login-password');
     const submitBtn = form.querySelector('.login-btn');
     const loadingOverlay = document.querySelector('.login-loading');
     const successOverlay = document.querySelector('.login-success');
-    
+
     // Clear previous errors
     document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
-    
+
     // Validate inputs
     if (!emailInput.value.trim()) {
         showFieldError('login-email', 'Email is required');
         return;
     }
-    
+
     if (!passwordInput.value) {
         showFieldError('login-password', 'Password is required');
         return;
     }
-    
+
     // Show loading
     if (loadingOverlay) loadingOverlay.style.display = 'flex';
     if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
     }
-    
+
     try {
         const response = await fetch('/api/login', {
             method: 'POST',
@@ -1899,15 +2040,15 @@ async function handleLogin(e) {
                 password: passwordInput.value
             })
         });
-        
+
         const result = await response.json();
-        
+
         if (loadingOverlay) loadingOverlay.style.display = 'none';
-        
+
         if (!result.success) {
             throw new Error(result.message || 'Login failed');
         }
-        
+
         // Store user data in session
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('userName', result.user.name);
@@ -1916,7 +2057,7 @@ async function handleLogin(e) {
         localStorage.setItem('userCollege', result.user.college || '');
         localStorage.setItem('userDepartment', result.user.department || '');
         localStorage.setItem('userPhone', result.user.phone || '');
-        
+
         // Show success
         if (successOverlay) {
             const welcomePlayer = successOverlay.querySelector('.welcome-player');
@@ -1925,23 +2066,23 @@ async function handleLogin(e) {
             }
             successOverlay.style.display = 'flex';
         }
-        
+
         // Redirect to tech events page (dashboard)
         setTimeout(() => {
             window.location.href = 'tech-events.html';
         }, 1500);
-        
+
     } catch (error) {
         console.error('Login error:', error);
         if (loadingOverlay) loadingOverlay.style.display = 'none';
-        
+
         // Show error message
         const emailError = document.getElementById('email-error');
         if (emailError) {
             emailError.textContent = error.message;
             emailError.style.display = 'block';
         }
-        
+
         // Reset button
         if (submitBtn) {
             submitBtn.disabled = false;
@@ -1964,21 +2105,42 @@ window.FormManager = {
 console.log('📝 Forms.js loaded - starting initialization...');
 
 // Initialize event registration on DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('🚀 DOM Content Loaded - initializing forms...');
     initEventRegistration();
     initFormStepNavigation();
     initPasswordToggles();
     initPasswordStrength();
-    
+
     // Initialize login form
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         console.log('✅ Login form found - attaching handler');
         loginForm.addEventListener('submit', handleLogin);
     }
-    
+
     console.log('✅ All form initializations complete');
 });
+
+// reCAPTCHA callback functions - must be globally accessible
+window.onRecaptchaSuccess = function (token) {
+    // Clear any reCAPTCHA error when user completes it
+    const errorEl = document.getElementById('recaptcha-error');
+    if (errorEl) {
+        errorEl.textContent = '';
+        errorEl.style.display = 'none';
+    }
+    console.log('✅ reCAPTCHA verified');
+};
+
+window.onRecaptchaExpired = function () {
+    // Show error when reCAPTCHA expires
+    const errorEl = document.getElementById('recaptcha-error');
+    if (errorEl) {
+        errorEl.textContent = 'reCAPTCHA expired. Please verify again.';
+        errorEl.style.display = 'block';
+    }
+    console.log('⚠️ reCAPTCHA expired');
+};
 
 console.log('📝 Forms loaded successfully!');

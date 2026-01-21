@@ -12,6 +12,8 @@ from dotenv import load_dotenv
 import os
 import base64
 import random
+import requests
+import re
 from datetime import datetime
 
 # Load environment variables
@@ -98,17 +100,20 @@ MAX_NONTECH_EVENTS_PER_USER = 1
 # Event-specific limits
 MAX_PAPER_PRESENTATION_TEAMS = 60
 
+# reCAPTCHA Secret Key
+RECAPTCHA_SECRET_KEY = os.getenv('SECRET_KEY', '6LeBa1EsAAAAAJyB1YiSfWE2HJWwvwJAOT0bI20h')
+
 
 # Serve static files (disabled for Vercel - static files served directly)
 # Uncomment these routes for local development
-#@app.route('/')
-#def index():
-#    return send_from_directory('.', 'index.html')
+@app.route('/')
+def index():
+    return send_from_directory('.', 'index.html')
 
 
-#@app.route('/<path:path>')
-#def serve_static(path):
-#   return send_from_directory('.', path)
+@app.route('/<path:path>')
+def serve_static(path):
+   return send_from_directory('.', path)
 
 
 # API: User Registration
@@ -134,6 +139,30 @@ def register():
         # Get form data
         data = request.form.to_dict()
         
+        # Verify reCAPTCHA
+        recaptcha_response = data.get('g-recaptcha-response')
+        if not recaptcha_response:
+            return jsonify({
+                'success': False,
+                'message': 'Please complete the reCAPTCHA verification'
+            }), 400
+        
+        # Verify with Google
+        recaptcha_verify = requests.post(
+            'https://www.google.com/recaptcha/api/siteverify',
+            data={
+                'secret': RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+        )
+        recaptcha_result = recaptcha_verify.json()
+        
+        if not recaptcha_result.get('success'):
+            return jsonify({
+                'success': False,
+                'message': 'reCAPTCHA verification failed. Please try again.'
+            }), 400
+        
         # Required fields validation
         required_fields = ['name', 'email', 'password', 'phone', 'college', 'department', 'year', 'foodPriority', 'transactionId']
         for field in required_fields:
@@ -142,6 +171,61 @@ def register():
                     'success': False,
                     'message': f'Missing required field: {field}'
                 }), 400
+        
+        # ========== ENHANCED VALIDATION TO PREVENT FAKE REGISTRATIONS ==========
+        
+        # Validate Name - must have first and last name, no fake patterns
+        name = data['name'].strip()
+        fake_name_patterns = re.compile(r'^(user\d*|test\d*|admin\d*|fake\d*|asdf|qwerty|abc|xyz)$', re.IGNORECASE)
+        if len(name) < 3:
+            return jsonify({'success': False, 'message': 'Name is too short'}), 400
+        if fake_name_patterns.match(name.replace(' ', '')):
+            return jsonify({'success': False, 'message': 'Please enter your real name'}), 400
+        if len(name.split()) < 2:
+            return jsonify({'success': False, 'message': 'Please enter your full name (first and last name)'}), 400
+        
+        # Validate Email - no fake patterns
+        email = data['email'].lower().strip()
+        fake_email_patterns = re.compile(r'^(user\d+|test\d*|fake\d*|admin\d*|abc\d*)@', re.IGNORECASE)
+        email_regex = re.compile(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+        if not email_regex.match(email):
+            return jsonify({'success': False, 'message': 'Invalid email format'}), 400
+        if fake_email_patterns.match(email):
+            return jsonify({'success': False, 'message': 'Please enter your real email address'}), 400
+        
+        # Validate Phone - must be valid Indian mobile number, no fake patterns
+        phone = data['phone'].strip()
+        if not re.match(r'^[6-9]\d{9}$', phone):
+            return jsonify({'success': False, 'message': 'Please enter a valid 10-digit Indian mobile number'}), 400
+        fake_phone_patterns = re.compile(r'^(\d)\1{5,}|^98000000|^12345|^00000')
+        if fake_phone_patterns.match(phone):
+            return jsonify({'success': False, 'message': 'Please enter your real phone number'}), 400
+        
+        # Validate College name
+        college = data['college'].strip()
+        if len(college) < 5:
+            return jsonify({'success': False, 'message': 'Please enter a valid college name'}), 400
+        fake_college_patterns = re.compile(r'^(test|fake|abc|xyz|college|university|school)$', re.IGNORECASE)
+        if fake_college_patterns.match(college):
+            return jsonify({'success': False, 'message': 'Please enter your actual college name'}), 400
+        
+        # Validate Transaction ID
+        transaction_id = data['transactionId'].strip()
+        if len(transaction_id) < 8:
+            return jsonify({'success': False, 'message': 'Transaction ID seems too short'}), 400
+        fake_txn_patterns = re.compile(r'^(test|fake|123+|abc|txn|trans|0+|1+)$', re.IGNORECASE)
+        if fake_txn_patterns.match(transaction_id):
+            return jsonify({'success': False, 'message': 'Please enter a valid transaction ID'}), 400
+        
+        # Validate Password strength
+        password = data['password']
+        if len(password) < 6:
+            return jsonify({'success': False, 'message': 'Password must be at least 6 characters'}), 400
+        weak_passwords = ['123456', 'password', 'qwerty', 'abc123', '111111', '123123']
+        if password.lower() in weak_passwords:
+            return jsonify({'success': False, 'message': 'This password is too common. Please choose a stronger one.'}), 400
+        
+        # ========== END ENHANCED VALIDATION ==========
         
         # Handle payment screenshot file
         payment_screenshot = None
