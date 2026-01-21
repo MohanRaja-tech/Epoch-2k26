@@ -100,8 +100,13 @@ MAX_NONTECH_EVENTS_PER_USER = 1
 # Event-specific limits
 MAX_PAPER_PRESENTATION_TEAMS = 60
 
-# reCAPTCHA Secret Key
-RECAPTCHA_SECRET_KEY = os.getenv('SECRET_KEY')
+# reCAPTCHA Secret Key - MUST be set in environment variables
+RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')
+
+# Validate that required environment variables are set
+if not RECAPTCHA_SECRET_KEY:
+    print("⚠️  WARNING: RECAPTCHA_SECRET_KEY environment variable is not set!")
+    print("⚠️  reCAPTCHA verification will fail. Please add it to your .env file.")
 
 
 # Serve static files (disabled for Vercel - static files served directly)
@@ -148,20 +153,36 @@ def register():
             }), 400
         
         # Verify with Google
-        recaptcha_verify = requests.post(
-            'https://www.google.com/recaptcha/api/siteverify',
-            data={
-                'secret': RECAPTCHA_SECRET_KEY,
-                'response': recaptcha_response
-            }
-        )
-        recaptcha_result = recaptcha_verify.json()
-        
-        if not recaptcha_result.get('success'):
+        try:
+            recaptcha_verify = requests.post(
+                'https://www.google.com/recaptcha/api/siteverify',
+                data={
+                    'secret': RECAPTCHA_SECRET_KEY,
+                    'response': recaptcha_response
+                },
+                timeout=10
+            )
+            recaptcha_result = recaptcha_verify.json()
+            
+            if not recaptcha_result.get('success'):
+                error_codes = recaptcha_result.get('error-codes', [])
+                print(f"reCAPTCHA verification failed: {error_codes}")
+                return jsonify({
+                    'success': False,
+                    'message': 'reCAPTCHA verification failed. Please try again.'
+                }), 400
+        except requests.exceptions.RequestException as e:
+            print(f"reCAPTCHA API error: {e}")
             return jsonify({
                 'success': False,
-                'message': 'reCAPTCHA verification failed. Please try again.'
-            }), 400
+                'message': 'Unable to verify reCAPTCHA. Please try again.'
+            }), 500
+        except Exception as e:
+            print(f"reCAPTCHA verification error: {e}")
+            return jsonify({
+                'success': False,
+                'message': 'reCAPTCHA verification error. Please try again.'
+            }), 500
         
         # Required fields validation
         required_fields = ['name', 'email', 'password', 'phone', 'college', 'department', 'year', 'foodPriority', 'transactionId']

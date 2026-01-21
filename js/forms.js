@@ -23,6 +23,11 @@ async function handleRegistration(e) {
     }
 
     // Validate reCAPTCHA
+    if (typeof grecaptcha === 'undefined') {
+        showFieldError('recaptcha', 'reCAPTCHA is still loading. Please wait a moment and try again.');
+        return;
+    }
+
     const recaptchaResponse = grecaptcha.getResponse();
     if (!recaptchaResponse) {
         showFieldError('recaptcha', 'Please complete the reCAPTCHA verification');
@@ -53,6 +58,12 @@ async function handleRegistration(e) {
             body: formDataObj
         });
 
+        // Check if response is JSON
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            throw new Error('Server returned an invalid response. Please try again or contact support.');
+        }
+
         const result = await response.json();
 
         if (!result.success) {
@@ -62,7 +73,9 @@ async function handleRegistration(e) {
                 return;
             }
             // Reset reCAPTCHA on failure
-            grecaptcha.reset();
+            if (typeof grecaptcha !== 'undefined') {
+                grecaptcha.reset();
+            }
             throw new Error(result.message || 'Registration failed');
         }
 
@@ -70,6 +83,10 @@ async function handleRegistration(e) {
         showRegistrationSuccess(result.epochId);
 
     } catch (error) {
+        // Reset reCAPTCHA on error
+        if (typeof grecaptcha !== 'undefined') {
+            grecaptcha.reset();
+        }
         alert(`Registration failed: ${error.message}`);
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-user-plus"></i> Complete Registration';
