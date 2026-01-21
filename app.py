@@ -101,19 +101,19 @@ MAX_NONTECH_EVENTS_PER_USER = 1
 MAX_PAPER_PRESENTATION_TEAMS = 60
 
 # reCAPTCHA Secret Key
-RECAPTCHA_SECRET_KEY = os.getenv('SECRET_KEY', '6LeBa1EsAAAAAJyB1YiSfWE2HJWwvwJAOT0bI20h')
+RECAPTCHA_SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 # Serve static files (disabled for Vercel - static files served directly)
 # Uncomment these routes for local development
-@app.route('/')
-def index():
-    return send_from_directory('.', 'index.html')
+#@app.route('/')
+#def index():
+#    return send_from_directory('.', 'index.html')
 
 
-@app.route('/<path:path>')
-def serve_static(path):
-   return send_from_directory('.', path)
+#@app.route('/<path:path>')
+#def serve_static(path):
+#   return send_from_directory('.', path)
 
 
 # API: User Registration
