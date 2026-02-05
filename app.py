@@ -98,7 +98,7 @@ MAX_TECH_EVENTS_PER_USER = 2
 MAX_NONTECH_EVENTS_PER_USER = 1
 
 # Event-specific limits
-MAX_PAPER_PRESENTATION_TEAMS = 60
+# MAX_PAPER_PRESENTATION_TEAMS = 60  # LIMIT REMOVED
 
 # reCAPTCHA Secret Key - MUST be set in environment variables
 RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')
@@ -567,21 +567,21 @@ def register_event():
                 'message': f'Invalid event: {event_id}'
             }), 400
         
-        # Check paper presentation team limit
-        if event_id == 'paper-presentation':
-            event_collection = event_collections[event_id]
-            current_count = event_collection.count_documents({})
-            
-            if current_count >= MAX_PAPER_PRESENTATION_TEAMS:
-                return jsonify({
-                    'success': False,
-                    'message': f'Paper Presentation registrations are now closed! Maximum limit of {MAX_PAPER_PRESENTATION_TEAMS} teams has been reached.',
-                    'eventFull': True,
-                    'eventId': event_id,
-                    'eventName': 'Paper Presentation',
-                    'currentCount': current_count,
-                    'maxLimit': MAX_PAPER_PRESENTATION_TEAMS
-                }), 403
+        # Check paper presentation team limit - LIMIT REMOVED
+        # if event_id == 'paper-presentation':
+        #     event_collection = event_collections[event_id]
+        #     current_count = event_collection.count_documents({})
+        #     
+        #     if current_count >= MAX_PAPER_PRESENTATION_TEAMS:
+        #         return jsonify({
+        #             'success': False,
+        #             'message': f'Paper Presentation registrations are now closed! Maximum limit of {MAX_PAPER_PRESENTATION_TEAMS} teams has been reached.',
+        #             'eventFull': True,
+        #             'eventId': event_id,
+        #             'eventName': 'Paper Presentation',
+        #             'currentCount': current_count,
+        #             'maxLimit': MAX_PAPER_PRESENTATION_TEAMS
+        #         }), 403
         
         # Validate all EPOCH IDs exist
         epoch_ids = [p['epochId'] for p in participants]
