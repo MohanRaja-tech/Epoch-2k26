@@ -543,7 +543,7 @@ function displayPlayerBadge(playerNumber, userName) {
                 </div>
                 <ul class="dropdown-list">
                     <li><a href="#" class="view-player-card"><i class="fas fa-id-card"></i> Player Card</a></li>
-                    <li><a href="registration.html"><i class="fas fa-calendar-check"></i> My Events</a></li>
+                    <li><a href="tech-events.html"><i class="fas fa-calendar-check"></i> View Events</a></li>
                     <li class="divider"></li>
                     <li><a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
